@@ -1,0 +1,296 @@
++-------------+-------------+--------+
+| first_name  | last_name   | salary |
++-------------+-------------+--------+
+| Kyoichi     | Maliniak    |  94692 |
+| Sumant      | Peac        |  94409 |
+| Cristinel   | Bouloucos   |  99651 |
+| Suzette     | Pettey      |  96646 |
+| Yinghua     | Dredge      |  97830 |
+| Alejandro   | McAlpine    |  94161 |
+| Breannda    | Billingsley |  93188 |
+| Tse         | Herber      |  97338 |
+| Kwee        | Schusler    | 103672 |
+| Charlene    | Brattka     | 113229 |
+| Reuven      | Garigliano  |  96322 |
+| Tuval       | Kalloufi    |  93621 |
+| Somnath     | Foote       |  96333 |
+| Jungsoon    | Syrzycki    |  98003 |
+| Valter      | Sullins     |  98538 |
+| Margareta   | Markovitch  | 108407 |
+| Vishwani    | Minakawa    | 106491 |
+| Peternela   | Onuegbe     |  93193 |
+| Przemyslawa | Kaelbling   |  95873 |
+| Hauke       | Zhang       | 101987 |
+| Arie        | Staelin     | 103244 |
++-------------+-------------+--------+
+21 rows in set (0.003 sec)
+
++------------+-------------+------------------+
+| first_name | last_name   | dept_name        |
++------------+-------------+------------------+
+| Tzvetan    | Zielinski   | Research         |
+| Lillian    | Haddadi     | Research         |
+| Weiyi      | Meriste     | Research         |
+| Lucien     | Rosenbaum   | Research         |
+| Heping     | Nitsch      | Research         |
+| Reuven     | Garigliano  | Research         |
+| Remzi      | Waschkowski | Research         |
+| Arie       | Staelin     | Research         |
+| Hilary     | Kambil      | Research         |
+| Huan       | Lortz       | Customer Service |
+| Basil      | Tramer      | Customer Service |
+| Breannda   | Billingsley | Customer Service |
+| Jungsoon   | Syrzycki    | Customer Service |
+| Tonny      | Butterworth | Customer Service |
+| Marjo      | Giarratana  | Customer Service |
+| Xiaobin    | Spinelli    | Customer Service |
+| Yuchang    | Weedman     | Customer Service |
++------------+-------------+------------------+
+17 rows in set (0.001 sec)
+
++------------+-----------+------------------+
+| first_name | last_name | title            |
++------------+-----------+------------------+
+| Mingsen    | Casley    | Technique Leader |
+| Margareta  | Bierman   | Technique Leader |
+| Mokhtar    | Bernatsky | Technique Leader |
+| Kshitij    | Gils      | Technique Leader |
+| Krassimir  | Wegerle   | Technique Leader |
+| Rosine     | Cools     | Technique Leader |
+| Peternela  | Onuegbe   | Technique Leader |
+| Rutger     | Hofmeyr   | Technique Leader |
+| Sanjoy     | Quadeer   | Technique Leader |
++------------+-----------+------------------+
+9 rows in set (0.001 sec)
+
++-------------+--------------+--------+
+| first_name  | last_name    | salary |
++-------------+--------------+--------+
+| Shahaf      | Famili       |  41348 |
+| Mayuko      | Warwick      |  47017 |
+| Satosi      | Awdeh        |  47437 |
+| Moss        | Shanbhogue   |  47581 |
+| Lillian     | Haddadi      |  50032 |
+| Bojan       | Montemayor   |  50113 |
+| Basil       | Tramer       |  51326 |
+| Hisao       | Lipner       |  53315 |
+| Supot       | Herath       |  53589 |
+| Mayumi      | Schueller    |  53906 |
+| Danel       | Mondadori    |  54652 |
+| Mona        | Azuma        |  54699 |
+| Oscar       | Ghazalie     |  56654 |
+| Marjo       | Giarratana   |  58189 |
+| Mingsen     | Casley       |  58345 |
+| Yuchang     | Weedman      |  58745 |
+| Berni       | Genin        |  60598 |
+| Lucien      | Rosenbaum    |  62218 |
+| Adamantios  | Portugali    |  63053 |
+| Alejandro   | Brender      |  63918 |
+| Huan        | Lortz        |  64254 |
+| Karsten     | Sigstam      |  65400 |
+| Valdiodio   | Niizuma      |  66803 |
+| Shem        | Kieras       |  66995 |
+| Heping      | Nitsch       |  67156 |
+| Kshitij     | Gils         |  67231 |
+| Jayson      | Mandell      |  68612 |
+| Eberhardt   | Terkki       |  68901 |
+| Remzi       | Waschkowski  |  70161 |
+| Xiaobin     | Spinelli     |  71406 |
+| Rutger      | Hofmeyr      |  72432 |
+| Bezalel     | Simmel       |  72527 |
+| Berhard     | McFarlin     |  72542 |
+| Krassimir   | Wegerle      |  72583 |
+| Premal      | Baek         |  72729 |
+| Dung        | Pesch        |  72876 |
+| DeForest    | Hagimont     |  72903 |
+| Tonny       | Butterworth  |  73953 |
+| Leon        | DasSarma     |  74510 |
+| Rosine      | Cools        |  75121 |
+| Sanjoy      | Quadeer      |  77626 |
+| Kazuhito    | Cappelletti  |  77935 |
+| Sudharsan   | Flasterstein |  77955 |
+| Sanjiv      | Zschoche     |  78478 |
+| Shirish     | Ossenbruggen |  79229 |
+| Hilary      | Kambil       |  79393 |
+| Duangkaew   | Piveteau     |  80324 |
+| Mokhtar     | Bernatsky    |  80820 |
+| Hilari      | Morton       |  80955 |
+| Uri         | Lenart       |  81705 |
+| Sailaja     | Desikan      |  82715 |
+| Isamu       | Legleitner   |  83457 |
+| Margareta   | Bierman      |  86641 |
+| Tzvetan     | Zielinski    |  88070 |
+| Ebru        | Alpin        |  88443 |
+| Breannda    | Billingsley  |  93188 |
+| Peternela   | Onuegbe      |  93193 |
+| Alejandro   | McAlpine     |  94161 |
+| Kyoichi     | Maliniak     |  94692 |
+| Przemyslawa | Kaelbling    |  95873 |
+| Reuven      | Garigliano   |  96322 |
+| Somnath     | Foote        |  96333 |
+| Suzette     | Pettey       |  96646 |
+| Tse         | Herber       |  97338 |
+| Yinghua     | Dredge       |  97830 |
+| Jungsoon    | Syrzycki     |  98003 |
+| Valter      | Sullins      |  98538 |
+| Cristinel   | Bouloucos    |  99651 |
+| Hauke       | Zhang        | 101987 |
+| Arie        | Staelin      | 103244 |
+| Vishwani    | Minakawa     | 106491 |
+| Margareta   | Markovitch   | 108407 |
+| Charlene    | Brattka      | 113229 |
++-------------+--------------+--------+
+73 rows in set (0.003 sec)
+
++-------------+--------------+------------+
+| first_name  | last_name    | birth_date |
++-------------+--------------+------------+
+| Hilari      | Morton       | 1965-01-03 |
+| Valdiodio   | Niizuma      | 1964-10-18 |
+| Sailaja     | Desikan      | 1964-06-11 |
+| Bezalel     | Simmel       | 1964-06-02 |
+| Leon        | DasSarma     | 1964-04-25 |
+| Mona        | Azuma        | 1964-04-18 |
+| Domenick    | Tempesti     | 1963-11-26 |
+| Parviz      | Lortz        | 1963-09-09 |
+| Oscar       | Ghazalie     | 1963-07-27 |
+| Pradeep     | Makrucki     | 1963-07-22 |
+| Florian     | Syrotiuk     | 1963-07-11 |
+| Vishwani    | Minakawa     | 1963-06-21 |
+| Eberhardt   | Terkki       | 1963-06-07 |
+| Duangkaew   | Piveteau     | 1963-06-01 |
+| Satosi      | Awdeh        | 1963-04-14 |
+| Sudharsan   | Flasterstein | 1963-03-21 |
+| Sanjoy      | Quadeer      | 1963-02-07 |
+| Bader       | Swan         | 1962-12-29 |
+| Charlene    | Brattka      | 1962-11-26 |
+| Somnath     | Foote        | 1962-11-19 |
+| Kenroku     | Malabarba    | 1962-11-07 |
+| Tse         | Herber       | 1962-10-19 |
+| Xiaobin     | Spinelli     | 1962-10-18 |
+| Divier      | Reistad      | 1962-07-10 |
+| Przemyslawa | Kaelbling    | 1962-02-24 |
+| Anoosh      | Peyn         | 1961-11-02 |
+| Breannda    | Billingsley  | 1961-10-15 |
+| Kshitij     | Gils         | 1961-10-05 |
+| Sreekrishna | Servieres    | 1961-09-23 |
+| Mingsen     | Casley       | 1961-09-21 |
+| Rosine      | Cools        | 1961-09-07 |
+| Brendon     | Bernini      | 1961-09-01 |
+| Kendra      | Hofting      | 1961-05-30 |
+| Kazuhito    | Cappelletti  | 1961-05-02 |
+| Basil       | Tramer       | 1961-04-24 |
+| Peternela   | Onuegbe      | 1961-03-14 |
+| Heping      | Nitsch       | 1961-02-26 |
+| Zhongwei    | Rosen        | 1960-12-17 |
+| Patricio    | Bridgland    | 1960-10-04 |
+| Yishay      | Tzvieli      | 1960-09-19 |
+| Margareta   | Bierman      | 1960-09-06 |
+| Dung        | Pesch        | 1960-08-19 |
+| Jeong       | Reistad      | 1960-08-09 |
+| Lucien      | Rosenbaum    | 1960-07-23 |
+| Huan        | Lortz        | 1960-07-20 |
+| Tuval       | Kalloufi     | 1960-05-25 |
+| Yuchang     | Weedman      | 1960-03-25 |
+| Gao         | Dolinsky     | 1960-03-09 |
+| Ramzi       | Erde         | 1960-02-20 |
+| Danel       | Mondadori    | 1959-12-25 |
+| Parto       | Bamford      | 1959-12-03 |
+| Arie        | Staelin      | 1959-11-09 |
+| Ebru        | Alpin        | 1959-10-28 |
+| Alejandro   | Brender      | 1959-10-01 |
+| Weiyi       | Meriste      | 1959-09-13 |
+| Uri         | Lenart       | 1959-08-27 |
+| Guoxiang    | Nooteboom    | 1959-08-19 |
+| Adamantios  | Portugali    | 1959-08-10 |
+| Vishv       | Zockler      | 1959-07-23 |
+| Xinglin     | Eugenio      | 1959-07-23 |
+| Udi         | Jansch       | 1959-04-07 |
+| Karsten     | Joslin       | 1959-01-27 |
+| Karsten     | Sigstam      | 1958-12-02 |
+| Prasadram   | Heyers       | 1958-10-31 |
+| Suzette     | Pettey       | 1958-09-05 |
+| Elvis       | Demeyer      | 1958-07-14 |
+| Cristinel   | Bouloucos    | 1958-07-06 |
+| Yinghua     | Dredge       | 1958-05-21 |
+| Saniya      | Kalloufi     | 1958-02-19 |
+| Hisao       | Lipner       | 1958-01-21 |
+| Premal      | Baek         | 1957-12-03 |
+| Moss        | Shanbhogue   | 1957-08-14 |
+| DeForest    | Hagimont     | 1957-07-08 |
+| Arumugam    | Ossenbruggen | 1957-05-25 |
+| Tzvetan     | Zielinski    | 1957-05-23 |
+| Mayumi      | Schueller    | 1957-04-04 |
+| Isamu       | Legleitner   | 1957-03-28 |
+| Otmar       | Herbst       | 1956-12-13 |
+| Arif        | Merlo        | 1956-11-14 |
+| Margareta   | Markovitch   | 1956-09-12 |
+| Supot       | Herath       | 1956-07-28 |
+| Marjo       | Giarratana   | 1956-06-14 |
+| Krassimir   | Wegerle      | 1956-06-08 |
+| Georgy      | Dredge       | 1956-06-06 |
+| Valter      | Sullins      | 1956-05-25 |
+| Magy        | Stamatiou    | 1956-02-26 |
+| Berni       | Genin        | 1956-02-12 |
+| Amabile     | Gomatam      | 1955-10-04 |
+| Mokhtar     | Bernatsky    | 1955-08-28 |
+| Reuven      | Garigliano   | 1955-08-20 |
+| Hauke       | Zhang        | 1955-03-16 |
+| Kyoichi     | Maliniak     | 1955-01-21 |
+| Tonny       | Butterworth  | 1954-10-05 |
+| Berhard     | McFarlin     | 1954-10-01 |
+| Jayson      | Mandell      | 1954-09-16 |
+| Sanjiv      | Zschoche     | 1954-09-13 |
+| Kazuhide    | Peha         | 1954-06-19 |
+| Ebbe        | Callaway     | 1954-05-30 |
+| Rutger      | Hofmeyr      | 1954-05-22 |
+| Chirstian   | Koblick      | 1954-05-01 |
+| Jungsoon    | Syrzycki     | 1954-02-25 |
+| Shir        | McClurg      | 1954-02-23 |
+| Mary        | Sluis        | 1953-11-07 |
+| Shem        | Kieras       | 1953-10-04 |
+| Bojan       | Montemayor   | 1953-09-29 |
+| Alejandro   | McAlpine     | 1953-09-19 |
+| Georgi      | Facello      | 1953-09-02 |
+| Hidefumi    | Caine        | 1953-07-28 |
+| Shirish     | Ossenbruggen | 1953-06-24 |
+| Anneke      | Preusig      | 1953-04-20 |
+| Yongqiao    | Berztiss     | 1953-04-03 |
+| Alain       | Chappelet    | 1953-02-08 |
+| Lillian     | Haddadi      | 1953-01-23 |
+| Claudi      | Stavenow     | 1953-01-07 |
+| Mayuko      | Warwick      | 1952-12-24 |
+| Kwee        | Schusler     | 1952-11-13 |
+| Gino        | Leonhardt    | 1952-08-06 |
+| Shahaf      | Famili       | 1952-07-08 |
+| Zvonko      | Nyanchama    | 1952-06-29 |
+| Hilary      | Kambil       | 1952-06-27 |
+| Erez        | Ritzmann     | 1952-06-13 |
+| Hironoby    | Sidou        | 1952-05-15 |
+| Sumant      | Peac         | 1952-04-19 |
+| Remzi       | Waschkowski  | 1952-02-27 |
++-------------+--------------+------------+
+124 rows in set (0.001 sec)
+
++------------+------------+
+| first_name | last_name  |
++------------+------------+
+| Vishwani   | Minakawa   |
+| Isamu      | Legleitner |
+| Karsten    | Sigstam    |
+| Oscar      | Ghazalie   |
+| Leon       | DasSarma   |
+| Dung       | Pesch      |
+| Hauke      | Zhang      |
+| Hilary     | Kambil     |
+| Yuchang    | Weedman    |
++------------+------------+
+9 rows in set (0.001 sec)
+
++------------+-----------+-----------+
+| first_name | last_name | dept_name |
++------------+-----------+-----------+
+| Charlene   | Brattka   | Sales     |
++------------+-----------+-----------+
+1 row in set (0.004 sec)
+
