@@ -1,4 +1,4 @@
---  Sample employee database 
+--  Sample employee database !
 --  See changelog table for details
 --  Copyright (C) 2007,2008, MySQL AB
 --  
