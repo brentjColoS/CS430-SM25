@@ -7,7 +7,7 @@
 SELECT * FROM Book ORDER BY ISBN;
 
 -- Task 5b) List the contents of the Member relation ordered by last name then first name
-SELECT * FROM Member ORDER BY LastName, FirstName;
+SELECT * FROM Member ORDER BY Name;
 
 -- Task 5c) List the contents of the Author relation ordered by last name then first name
 SELECT * FROM Author ORDER BY LastName, FirstName;

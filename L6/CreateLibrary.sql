@@ -77,7 +77,8 @@ CREATE TABLE BookAuthor (
 CREATE TABLE Member (
     MemberID INT NOT NULL,
     Name VARCHAR(50) NOT NULL,
-    DOB DATE NOT NULL,
+    Gender VARCHAR(1) NOT NULL,
+    DateOfBirth DATE NOT NULL,
     PRIMARY KEY (MemberID)
 );
 
@@ -87,7 +88,7 @@ CREATE TABLE Borrowed (
     ISBN VARCHAR(20) NOT NULL,
     DateBorrowed DATE NOT NULL,
     DateReturned DATE,
-    PRIMARY KEY (MemberID, ISBN, DateBorrowed, DateReturned),
+    PRIMARY KEY (MemberID, ISBN, DateBorrowed),
     FOREIGN KEY (MemberID) REFERENCES Member(MemberID) ON DELETE CASCADE,
     FOREIGN KEY (ISBN) REFERENCES Book(ISBN) ON DELETE CASCADE
 );
