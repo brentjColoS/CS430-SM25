@@ -85,8 +85,8 @@ CREATE TABLE Member (
 CREATE TABLE Borrowed (
     MemberID INT NOT NULL,
     ISBN VARCHAR(20) NOT NULL,
-    CheckoutDate DATE NOT NULL,
-    CheckinDate DATE,
+    DateBorrowed DATE NOT NULL,
+    DateReturned DATE,
     PRIMARY KEY (MemberID, ISBN, DateBorrowed, DateReturned),
     FOREIGN KEY (MemberID) REFERENCES Member(MemberID) ON DELETE CASCADE,
     FOREIGN KEY (ISBN) REFERENCES Book(ISBN) ON DELETE CASCADE
