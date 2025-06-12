@@ -39,7 +39,7 @@ SELECT M.Name, M.MemberID, B.Title
 FROM Member M
 JOIN Borrowed BR ON M.MemberID = BR.MemberID
 JOIN Book B ON BR.ISBN = B.ISBN
-WHERE BR.CheckinDate IS NULL
+WHERE BR.DateReturned IS NULL
 ORDER BY M.Name, B.Title;
 
 -- Task 10) For each Author, list the titles of books they have written
