@@ -76,8 +76,7 @@ CREATE TABLE BookAuthor (
 -- Member
 CREATE TABLE Member (
     MemberID INT NOT NULL,
-    LastName VARCHAR(50) NOT NULL,
-    FirstName VARCHAR(50) NOT NULL,
+    Name VARCHAR(50) NOT NULL,
     DOB DATE NOT NULL,
     PRIMARY KEY (MemberID)
 );
