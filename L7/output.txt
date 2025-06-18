@@ -1,0 +1,1141 @@
+MariaDB [brentj]> SOURCE CreateLibrary.sql;
+Query OK, 0 rows affected (0.040 sec)
+
+Query OK, 0 rows affected (0.046 sec)
+
+Query OK, 0 rows affected (0.045 sec)
+
+Query OK, 0 rows affected (0.044 sec)
+
+Query OK, 0 rows affected (0.034 sec)
+
+Query OK, 0 rows affected (0.044 sec)
+
+Query OK, 0 rows affected (0.043 sec)
+
+Query OK, 0 rows affected (0.045 sec)
+
+Query OK, 0 rows affected (0.044 sec)
+
+Query OK, 0 rows affected (0.039 sec)
+
+Query OK, 0 rows affected (0.043 sec)
+
+Query OK, 0 rows affected (0.053 sec)
+
+Query OK, 0 rows affected (0.092 sec)
+
+Query OK, 0 rows affected (0.091 sec)
+
+Query OK, 0 rows affected (0.099 sec)
+
+Query OK, 0 rows affected (0.075 sec)
+
+Query OK, 0 rows affected (0.106 sec)
+
+Query OK, 0 rows affected (0.098 sec)
+
+Query OK, 0 rows affected (0.110 sec)
+
+Query OK, 0 rows affected (0.086 sec)
+
+Query OK, 0 rows affected (0.076 sec)
+
+Query OK, 0 rows affected (0.088 sec)
+
+Query OK, 0 rows affected (0.107 sec)
+
+Query OK, 0 rows affected (0.101 sec)
+
+Query OK, 0 rows affected (0.086 sec)
+
+Query OK, 0 rows affected (0.045 sec)
+
+Query OK, 0 rows affected (0.079 sec)
+
+Query OK, 0 rows affected (0.057 sec)
+
+Query OK, 0 rows affected (0.101 sec)
+
+Query OK, 0 rows affected (0.063 sec)
+
+MariaDB [brentj]> SOURCE PopulateLibrary.sql;
+Database changed
+Query OK, 1 row affected (0.013 sec)
+
+Query OK, 1 row affected (0.009 sec)
+
+Query OK, 1 row affected (0.029 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.049 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.021 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.014 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.013 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.005 sec)
+
+Query OK, 1 row affected (0.017 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.018 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.013 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.017 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.014 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.009 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.020 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.010 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.016 sec)
+
+Query OK, 1 row affected (0.013 sec)
+
+Query OK, 1 row affected (0.014 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.013 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.013 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.017 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.010 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.013 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.025 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.010 sec)
+
+Query OK, 1 row affected (0.009 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.013 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.023 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.014 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.010 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.013 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.010 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.014 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.010 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.018 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.021 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.014 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.007 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.013 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.015 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+MariaDB [brentj]> SOURCE Queries.sql;
++-----------+------------+--------------------+--------------+-------+
+| LibraryID | Name       | Street             | City         | State |
++-----------+------------+--------------------+--------------+-------+
+|         1 | Main       | 42 South Main      | Fort Collins | CO    |
+|         2 | South Park | 4000 South College | Fort Collins | CO    |
++-----------+------------+--------------------+--------------+-------+
+2 rows in set (0.001 sec)
+
++----------------+-----------+-------+-------+-------------+---------------------+
+| ISBN           | LibraryID | Shelf | Floor | TotalCopies | CopiesNotCheckedOut |
++----------------+-----------+-------+-------+-------------+---------------------+
+| 96-42103-10001 |         1 | 1     | 1     |           3 |                   3 |
+| 96-42103-10001 |         2 | 1     | 8     |           1 |                   1 |
+| 96-42103-10002 |         1 | 1     | 1     |           1 |                   1 |
+| 96-42103-10002 |         2 | 1     | 8     |           1 |                   1 |
+| 96-42103-10003 |         1 | 1     | 1     |           1 |                   1 |
+| 96-42103-10003 |         2 | 1     | 8     |           1 |                   1 |
+| 96-42103-10004 |         1 | 2     | 1     |           2 |                   2 |
+| 96-42103-10004 |         2 | 1     | 8     |           1 |                   1 |
+| 96-42103-10005 |         1 | 2     | 1     |           1 |                   1 |
+| 96-42103-10005 |         2 | 1     | 8     |           1 |                   1 |
+| 96-42103-10006 |         1 | 2     | 1     |           1 |                   1 |
+| 96-42103-10006 |         2 | 1     | 8     |           1 |                   1 |
+| 96-42103-10007 |         1 | 3     | 1     |           2 |                   2 |
+| 96-42103-10007 |         2 | 3     | 7     |           1 |                   1 |
+| 96-42103-10008 |         1 | 3     | 1     |           2 |                   2 |
+| 96-42103-10008 |         2 | 3     | 7     |           1 |                   1 |
+| 96-42103-10009 |         1 | 3     | 1     |           2 |                   2 |
+| 96-42103-10009 |         2 | 1     | 7     |           1 |                   1 |
+| 96-42103-10011 |         1 | 4     | 1     |           2 |                   2 |
+| 96-42103-10011 |         2 | 1     | 7     |           1 |                   1 |
+| 96-42103-10022 |         1 | 4     | 1     |           3 |                   3 |
+| 96-42103-10022 |         2 | 2     | 7     |           1 |                   1 |
+| 96-42103-10033 |         1 | 4     | 1     |           3 |                   3 |
+| 96-42103-10033 |         2 | 3     | 7     |           1 |                   1 |
+| 96-42103-10034 |         1 | 5     | 2     |           1 |                   1 |
+| 96-42103-10040 |         1 | 5     | 2     |           2 |                   2 |
+| 96-42103-10040 |         2 | 1     | 4     |           1 |                   1 |
+| 96-42103-10054 |         1 | 5     | 2     |           2 |                   2 |
+| 96-42103-10054 |         2 | 1     | 4     |           1 |                   1 |
+| 96-42103-10068 |         1 | 6     | 2     |           1 |                   1 |
+| 96-42103-10068 |         2 | 1     | 4     |           1 |                   1 |
+| 96-42103-10081 |         1 | 6     | 2     |           1 |                   1 |
+| 96-42103-10081 |         2 | 1     | 4     |           1 |                   1 |
+| 96-42103-10093 |         1 | 6     | 2     |           1 |                   1 |
+| 96-42103-10093 |         2 | 1     | 4     |           1 |                   1 |
+| 96-42103-10109 |         1 | 6     | 2     |           1 |                   1 |
+| 96-42103-10109 |         2 | 1     | 4     |           1 |                   1 |
+| 96-42103-10206 |         1 | 7     | 2     |           1 |                   1 |
+| 96-42103-10206 |         2 | 1     | 4     |           1 |                   1 |
+| 96-42103-10300 |         1 | 7     | 2     |           2 |                   1 |
+| 96-42103-10300 |         2 | 1     | 4     |           1 |                   1 |
+| 96-42103-10401 |         1 | 7     | 2     |           2 |                   1 |
+| 96-42103-10401 |         2 | 1     | 3     |           1 |                   1 |
+| 96-42103-10502 |         1 | 7     | 2     |           1 |                   1 |
+| 96-42103-10502 |         2 | 1     | 3     |           1 |                   1 |
+| 96-42103-10604 |         1 | 8     | 2     |           2 |                   1 |
+| 96-42103-10709 |         1 | 8     | 2     |           3 |                   1 |
+| 96-42103-10800 |         1 | 8     | 2     |           2 |                   1 |
+| 96-42103-10907 |         1 | 8     | 2     |           7 |                   1 |
+| 96-42103-10907 |         2 | 7     | 3     |           1 |                   1 |
+| 96-42103-11003 |         1 | 8     | 2     |           3 |                   1 |
+| 96-42103-11003 |         2 | 2     | 3     |           1 |                   1 |
+| 96-42103-11604 |         2 | 2     | 3     |           1 |                   1 |
+| 96-42103-11709 |         2 | 1     | 3     |           1 |                   1 |
+| 96-42103-11800 |         2 | 2     | 3     |           1 |                   1 |
++----------------+-----------+-------+-------+-------------+---------------------+
+55 rows in set (0.001 sec)
+
++------------------------------+-------------+-------------+
+| Title                        | LibraryName | TotalCopies |
++------------------------------+-------------+-------------+
+| American Football            | South Park  |           1 |
+| American Football            | Main        |           3 |
+| Challenging Puzzles          | Main        |           3 |
+| Challenging Puzzles          | South Park  |           1 |
+| Cubs Win!                    | South Park  |           1 |
+| Cubs Win!                    | Main        |           7 |
+| Database Theory              | Main        |           2 |
+| Database Theory              | South Park  |           1 |
+| Downton Abbey                | Main        |           2 |
+| Downton Abbey                | South Park  |           1 |
+| Eating Healthy               | Main        |           2 |
+| Eating Healthy               | South Park  |           1 |
+| Escape from Gilligans Island | Main        |           1 |
+| Escape from Gilligans Island | South Park  |           1 |
+| Fixing Computers             | South Park  |           1 |
+| Fixing Computers             | Main        |           1 |
+| Gardening Tips               | South Park  |           1 |
+| Gardening Tips               | Main        |           1 |
+| Hal Finds a Home             | Main        |           1 |
+| Hal Finds a Home             | South Park  |           1 |
+| How to Digitally Sign        | South Park  |           1 |
+| How to Digitally Sign        | Main        |           2 |
+| How to Grow Cucumbers        | Main        |           2 |
+| How to Grow Cucumbers        | South Park  |           1 |
+| How to Grow Tomatoes         | South Park  |           1 |
+| How to Grow Tomatoes         | Main        |           3 |
+| Lacey Discovers Herself      | Main        |           2 |
+| Lacey Discovers Herself      | South Park  |           1 |
+| Last Train to Clarksville    | South Park  |           1 |
+| Last Train to Clarksville    | Main        |           1 |
+| Missing Tomorrow             | South Park  |           1 |
+| Missing Tomorrow             | Main        |           3 |
+| Mr. Ed                       | Main        |           1 |
+| Mr. Ed                       | South Park  |           1 |
+| Mr. Smith Goes to Washington | South Park  |           1 |
+| Mr. Smith Goes to Washington | Main        |           1 |
+| Red Burn                     | South Park  |           1 |
+| Red Burn                     | Main        |           1 |
+| Sam Needs a Friend           | South Park  |           1 |
+| Sam Needs a Friend           | Main        |           2 |
+| Studying is Your Friend      | South Park  |           1 |
+| Studying is Your Friend      | Main        |           1 |
+| Taks McGrill                 | South Park  |           1 |
+| Taks McGrill                 | Main        |           1 |
+| To Have and To Cherish       | Main        |           2 |
+| To Have and To Cherish       | South Park  |           1 |
+| Where to Start               | South Park  |           1 |
+| Where to Start               | Main        |           2 |
++------------------------------+-------------+-------------+
+48 rows in set (0.003 sec)
+
++-------------+-----------+
+| LibraryName | NumTitles |
++-------------+-----------+
+| Main        |        28 |
+| South Park  |        27 |
++-------------+-----------+
+2 rows in set (0.001 sec)
+
+ERROR 1050 (42S01): Table 'BookAuthorLibraryView' already exists
++------------------------------+-----------------------------------------------------+-------+-------------+
+| BookTitle                    | Authors                                             | Shelf | LibraryName |
++------------------------------+-----------------------------------------------------+-------+-------------+
+| American Football            | Julie Barnes                                        | 4     | Main        |
+| American Football            | Julie Barnes                                        | 3     | South Park  |
+| Challenging Puzzles          | Roger Ramjet                                        | 4     | Main        |
+| Challenging Puzzles          | Roger Ramjet                                        | 2     | South Park  |
+| Cubs Win!                    | Red Skelton, Barbara Wright                         | 8     | Main        |
+| Cubs Win!                    | Red Skelton, Barbara Wright                         | 7     | South Park  |
+| Database Theory              | Dickey Betts, Waco Kid                              | 4     | Main        |
+| Database Theory              | Dickey Betts, Waco Kid                              | 1     | South Park  |
+| Downton Abbey                | Robert Crawley                                      | 3     | Main        |
+| Downton Abbey                | Robert Crawley                                      | 1     | South Park  |
+| Eating Healthy               | Dickey Betts, Waco Kid                              | 7     | Main        |
+| Eating Healthy               | Dickey Betts, Waco Kid                              | 1     | South Park  |
+| Escape from Gilligans Island | Bobby Ewing, Mickey Hart                            | 6     | Main        |
+| Escape from Gilligans Island | Bobby Ewing, Mickey Hart                            | 1     | South Park  |
+| European Football            | Julie Barnes                                        | 5     | Main        |
+| Fixing Computers             | Red Skelton                                         | 6     | Main        |
+| Fixing Computers             | Red Skelton                                         | 1     | South Park  |
+| Gardening Tips               | Julie Barnes, Thomas Magnum                         | 7     | Main        |
+| Gardening Tips               | Julie Barnes, Thomas Magnum                         | 1     | South Park  |
+| Green is Your Friend         | John Crichton, Barbara Wright                       | 8     | Main        |
+| Hal Finds a Home             | Mickey Hart                                         | 2     | Main        |
+| Hal Finds a Home             | Mickey Hart                                         | 1     | South Park  |
+| How to Digitally Sign        | John Crichton, Red Skelton                          | 3     | Main        |
+| How to Digitally Sign        | John Crichton, Red Skelton                          | 3     | South Park  |
+| How to Grow Cucumbers        | Bobby Ewing, Roger Ramjet                           | 7     | Main        |
+| How to Grow Cucumbers        | Bobby Ewing, Roger Ramjet                           | 1     | South Park  |
+| How to Grow Tomatoes         | Bobby Ewing, Waco Kid                               | 1     | Main        |
+| How to Grow Tomatoes         | Bobby Ewing, Waco Kid                               | 1     | South Park  |
+| Lacey Discovers Herself      | Julie Barnes, Thomas Magnum                         | 5     | Main        |
+| Lacey Discovers Herself      | Julie Barnes, Thomas Magnum                         | 1     | South Park  |
+| Last Train to Clarksville    | Bobby Ewing                                         | 2     | Main        |
+| Last Train to Clarksville    | Bobby Ewing                                         | 1     | South Park  |
+| Missing Tomorrow             | Dickey Betts, Mickey Hart, Perry Mason, Grace Slick | 8     | Main        |
+| Missing Tomorrow             | Dickey Betts, Mickey Hart, Perry Mason, Grace Slick | 2     | South Park  |
+| Mr. Ed                       | Scottie Ferguson                                    | 6     | Main        |
+| Mr. Ed                       | Scottie Ferguson                                    | 1     | South Park  |
+| Mr. Smith Goes to Washington | Red Skelton                                         | 1     | Main        |
+| Mr. Smith Goes to Washington | Red Skelton                                         | 1     | South Park  |
+| Red Burn                     | Robert Crawley, Waco Kid                            | 6     | Main        |
+| Red Burn                     | Robert Crawley, Waco Kid                            | 1     | South Park  |
+| Sam Needs a Friend           | Scottie Ferguson, Roger Thornhill, Barbara Wright   | 3     | Main        |
+| Sam Needs a Friend           | Scottie Ferguson, Roger Thornhill, Barbara Wright   | 3     | South Park  |
+| Studying is Your Friend      | Thomas Magnum, Roger Ramjet                         | 1     | Main        |
+| Studying is Your Friend      | Thomas Magnum, Roger Ramjet                         | 1     | South Park  |
+| Taks McGrill                 | Scottie Ferguson, Barbara Wright                    | 7     | Main        |
+| Taks McGrill                 | Scottie Ferguson, Barbara Wright                    | 1     | South Park  |
+| To Have and To Cherish       | Robert Crawley, John Crichton, Roger Thornhill      | 2     | Main        |
+| To Have and To Cherish       | Robert Crawley, John Crichton, Roger Thornhill      | 1     | South Park  |
+| Too Many Cooks               | Aeon Flux, Thomas Magnum                            | 8     | Main        |
+| Using the Library            | Thomas Magnum                                       | 8     | Main        |
+| Where to Start               | Roger Ramjet, Grace Slick                           | 5     | Main        |
+| Where to Start               | Roger Ramjet, Grace Slick                           | 1     | South Park  |
++------------------------------+-----------------------------------------------------+-------+-------------+
+52 rows in set (0.009 sec)
+
+MariaDB [brentj]> SOURCE Activity.sql;
+Query OK, 1 row affected (0.008 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.013 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.011 sec)
+
+Query OK, 1 row affected (0.012 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+Query OK, 1 row affected (0.006 sec)
+
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`brentj`.`Borrowed`, CONSTRAINT `Borrowed_ibfk_4` FOREIGN KEY (`ISBN`, `LibraryID`) REFERENCES `LocatedAt` (`ISBN`, `LibraryID`))
+Query OK, 1 row affected (0.011 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`brentj`.`Book`, CONSTRAINT `Book_ibfk_1` FOREIGN KEY (`PubID`) REFERENCES `Publisher` (`PubID`) ON DELETE CASCADE)
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`brentj`.`LocatedAt`, CONSTRAINT `LocatedAt_ibfk_1` FOREIGN KEY (`ISBN`) REFERENCES `Book` (`ISBN`) ON DELETE CASCADE)
++---------+-----------+------------+---------------------+
+| AuditID | TableName | ActionType | ActionTimestamp     |
++---------+-----------+------------+---------------------+
+|       1 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|       2 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|       3 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|       4 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|       5 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|       6 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|       7 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|       8 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|       9 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|      10 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|      11 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|      12 | Author    | INSERT     | 2025-06-17 22:33:58 |
+|      13 | Author    | INSERT     | 2025-06-17 22:33:59 |
+|      14 | Author    | INSERT     | 2025-06-17 22:33:59 |
+|      15 | Author    | INSERT     | 2025-06-17 22:33:59 |
+|      16 | Author    | INSERT     | 2025-06-17 22:33:59 |
+|      17 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      18 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      19 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      20 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      21 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      22 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      23 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      24 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      25 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      26 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      27 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      28 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      29 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      30 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      31 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      32 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      33 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      34 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      35 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      36 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      37 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      38 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      39 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      40 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      41 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      42 | Book      | INSERT     | 2025-06-17 22:33:59 |
+|      43 | Book      | INSERT     | 2025-06-17 22:34:00 |
+|      44 | Book      | INSERT     | 2025-06-17 22:34:00 |
+|      45 | Book      | INSERT     | 2025-06-17 22:34:00 |
+|      46 | Book      | INSERT     | 2025-06-17 22:34:00 |
+|      47 | Book      | INSERT     | 2025-06-17 22:34:00 |
+|      48 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      49 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      50 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      51 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      52 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      53 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      54 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      55 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      56 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      57 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      58 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      59 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      60 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      61 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      62 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      63 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      64 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      65 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      66 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      67 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      68 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      69 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      70 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      71 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      72 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      73 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      74 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      75 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      76 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      77 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      78 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      79 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      80 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      81 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      82 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      83 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      84 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      85 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      86 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      87 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      88 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      89 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      90 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      91 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      92 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      93 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      94 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      95 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      96 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      97 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      98 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|      99 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|     100 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|     101 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|     102 | LocatedAt | INSERT     | 2025-06-17 22:34:00 |
+|     103 | Book      | INSERT     | 2025-06-17 22:34:11 |
+|     104 | LocatedAt | INSERT     | 2025-06-17 22:34:11 |
+|     105 | LocatedAt | UPDATE     | 2025-06-17 22:34:11 |
+|     106 | Author    | INSERT     | 2025-06-17 22:34:11 |
+|     107 | LocatedAt | INSERT     | 2025-06-17 22:34:11 |
+|     108 | LocatedAt | UPDATE     | 2025-06-17 22:34:11 |
++---------+-----------+------------+---------------------+
+108 rows in set (0.001 sec)
+
+MariaDB [brentj]> notee;
