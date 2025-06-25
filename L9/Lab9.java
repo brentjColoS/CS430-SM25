@@ -10,7 +10,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class Lab4_xml {
+public class Lab9 {
 
 	public void readXML(String fileName)
 	{
@@ -63,7 +63,7 @@ public class Lab4_xml {
 	public static void main(String args[]){
 		try {
 
-			Lab4_xml showXML = new Lab4_xml();
+			Lab9 showXML = new Lab9();
 			showXML.readXML ("/s/bach/a/class/cs430dl/Current/more_assignments/LabData/Libdata.xml");
 		}catch( Exception e ) {
 			e.printStackTrace();
