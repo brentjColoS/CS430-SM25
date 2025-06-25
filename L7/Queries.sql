@@ -6,15 +6,15 @@
 -- Task 5
 
 -- 1. List the contents of the Library relation in order according to name.
-SELECT * FROM Library
+SELECT DISTINCT * FROM Library
 ORDER BY Name;
 
--- 2. List the contents of the Located at relation in alphabetic order according to ISBN.
-SELECT * FROM LocatedAt
+-- 2. List the contents of the LocatedAt relation in alphabetic order according to ISBN.
+SELECT DISTINCT * FROM LocatedAt
 ORDER BY ISBN;
 
 -- 3. For each book that has copies in both libraries, list the book name, number of copies, and library sorted by book name.
-SELECT 
+SELECT DISTINCT
     B.Title,
     L.Name AS LibraryName,
     LA.TotalCopies
@@ -29,7 +29,7 @@ WHERE LA.ISBN IN (
 )
 ORDER BY B.Title;
 
--- 4. For each library, list library name, and the number of titles sorted by library.
+-- 4. For each library, list library name, and the number of distinct titles sorted by library.
 SELECT 
     L.Name AS LibraryName,
     COUNT(DISTINCT LA.ISBN) AS NumTitles
@@ -56,7 +56,7 @@ GROUP BY
     b.Title, l.Name;
 
 -- Using this view, provide a list of books, authors, shelf, and library name sorted by book name.
-SELECT 
+SELECT DISTINCT
     v.BookTitle,
     v.Authors,
     la.Shelf,
@@ -65,5 +65,6 @@ FROM
     BookAuthorLibraryView v
     JOIN Book b ON v.BookTitle = b.Title
     JOIN LocatedAt la ON b.ISBN = la.ISBN
+WHERE la.LibraryID = (SELECT LibraryID FROM Library WHERE Name = v.LibraryName LIMIT 1)
 ORDER BY 
     v.BookTitle;
