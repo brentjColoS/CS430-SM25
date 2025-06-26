@@ -79,6 +79,12 @@ public class Lab9 {
                             continue;
                         }
 
+						// Check that the book is actually located at this library
+						if (!exists("SELECT * FROM LocatedAt WHERE ISBN = ? AND LibraryID = ?", isbn, libraryID.toString())) {
+							System.out.println("ERROR: Book ISBN " + isbn + " not found at Library " + libraryName);
+							continue;
+						}
+
                         // Insert checkout
                         PreparedStatement ps = conn.prepareStatement(
                             "INSERT INTO Borrowed (MemberID, ISBN, DateBorrowed, DateReturned, LibraryID) VALUES (?, ?, ?, NULL, ?)"
