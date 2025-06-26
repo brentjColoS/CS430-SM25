@@ -1,75 +1,106 @@
 package L9;
 
 import java.io.File;
-
+import java.sql.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 
 public class Lab9 {
 
-	public void readXML(String fileName)
-	{
-		try {
-			File file = new File(fileName);
-			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document doc = db.parse(file);
-			doc.getDocumentElement().normalize();
-			NodeList nodeLst = doc.getElementsByTagName("Borrowed_by");
+    private static final String DB_URL = "jdbc:mariadb://helmi:3306/your_eID";
+    private static final String USER = "your_eID";
+    private static final String PASS = "your_password";
+    private Connection conn;
 
-			for (int s = 0; s < nodeLst.getLength(); s++) {
+    public void readXML(String fileName) {
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-				Node fstNode = nodeLst.item(s);
+            File file = new File(fileName);
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(file);
+            doc.getDocumentElement().normalize();
+            NodeList nodeLst = doc.getElementsByTagName("Borrowed_by");
 
-				if (fstNode.getNodeType() == Node.ELEMENT_NODE) {
+            for (int s = 0; s < nodeLst.getLength(); s++) {
+                Node fstNode = nodeLst.item(s);
 
-					Element sectionNode = (Element) fstNode;
-					
-					NodeList memberIdElementList = sectionNode.getElementsByTagName("MemberID");
-					Element memberIdElmnt = (Element) memberIdElementList.item(0);
-					NodeList memberIdNodeList = memberIdElmnt.getChildNodes();
-					System.out.println("MemberID : "  + ((Node) memberIdNodeList.item(0)).getNodeValue().trim());
+                if (fstNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element sectionNode = (Element) fstNode;
 
-					NodeList secnoElementList = sectionNode.getElementsByTagName("ISBN");
-					Element secnoElmnt = (Element) secnoElementList.item(0);
-					NodeList secno = secnoElmnt.getChildNodes();
-					System.out.println("ISBN : "  + ((Node) secno.item(0)).getNodeValue().trim());
+                    String memberID = sectionNode.getElementsByTagName("MemberID").item(0).getTextContent().trim();
+                    String isbn = sectionNode.getElementsByTagName("ISBN").item(0).getTextContent().trim();
+                    String checkoutDate = sectionNode.getElementsByTagName("Checkout_date").item(0).getTextContent().trim();
+                    String checkinDate = sectionNode.getElementsByTagName("Checkin_date").item(0).getTextContent().trim();
 
-					NodeList codateElementList = sectionNode.getElementsByTagName("Checkout_date");
-					Element codElmnt = (Element) codateElementList.item(0);
-					NodeList cod = codElmnt.getChildNodes();
-					System.out.println("Checkout_date : "  + ((Node) cod.item(0)).getNodeValue().trim());
+                    if (!exists("SELECT * FROM Member WHERE MemberID = ?", memberID)) {
+                        System.out.println("ERROR: MemberID " + memberID + " not found.");
+                        continue;
+                    }
 
-					NodeList cidateElementList = sectionNode.getElementsByTagName("Checkin_date");
-					Element cidElmnt = (Element) cidateElementList.item(0);
-					NodeList cid = cidElmnt.getChildNodes();
-					System.out.println("Checkin_date : "  + ((Node) cid.item(0)).getNodeValue().trim());
+                    if (!exists("SELECT * FROM Book WHERE ISBN = ?", isbn)) {
+                        System.out.println("ERROR: ISBN " + isbn + " not found.");
+                        continue;
+                    }
 
-					System.out.println();
-				}
+                    if (!checkinDate.isEmpty()) {
+                        // It's a checkin
+                        if (exists("SELECT * FROM Borrowed WHERE MemberID = ? AND ISBN = ? AND DateReturned IS NULL", memberID, isbn)) {
+                            PreparedStatement ps = conn.prepareStatement(
+                                "UPDATE Borrowed SET DateReturned = ? WHERE MemberID = ? AND ISBN = ? AND DateReturned IS NULL"
+                            );
+                            ps.setString(1, checkinDate);
+                            ps.setString(2, memberID);
+                            ps.setString(3, isbn);
+                            ps.executeUpdate();
+                            System.out.println("Checkin updated: MemberID " + memberID + ", ISBN " + isbn);
+                        } else {
+                            System.out.println("ERROR: No matching checkout found to check in for MemberID " + memberID + ", ISBN " + isbn);
+                        }
+                    } else {
+                        // It's a checkout
+                        PreparedStatement ps = conn.prepareStatement(
+                            "INSERT INTO Borrowed (MemberID, ISBN, DateBorrowed, DateReturned) VALUES (?, ?, ?, NULL)"
+                        );
+                        ps.setString(1, memberID);
+                        ps.setString(2, isbn);
+                        ps.setString(3, checkoutDate);
+                        ps.executeUpdate();
+                        System.out.println("Checkout recorded: MemberID " + memberID + ", ISBN " + isbn);
+                    }
+                }
+            }
 
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
+            conn.close();
 
-	public static void main(String args[]){
-		try {
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
-			Lab9 showXML = new Lab9();
-			showXML.readXML ("/s/bach/a/class/cs430dl/Current/more_assignments/LabData/Libdata.xml");
-		}catch( Exception e ) {
-			e.printStackTrace();
+    private boolean exists(String query, String... params) {
+        try {
+            PreparedStatement ps = conn.prepareStatement(query);
+            for (int i = 0; i < params.length; i++) {
+                ps.setString(i + 1, params[i]);
+            }
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            System.out.println("ERROR checking existence: " + e.getMessage());
+            return false;
+        }
+    }
 
-		}//end catch
-
-	}//end main
-
-}//end class 
+    public static void main(String[] args) {
+        try {
+            Lab9 lab = new Lab9();
+            lab.readXML("/s/bach/a/class/cs430dl/Current/more_assignments/LabData/Libdata.xml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

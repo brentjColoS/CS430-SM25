@@ -3,49 +3,42 @@ package L9;
 import java.sql.*;
 
 public class Lab4_ex {
-  public static void main(String args[]){
+    public static void main(String[] args) {
+        Connection con = null;
 
-    Connection con = null;
+        try {
+            // Define URL of database server for database named 'brentj' on helmi
+            String url = "jdbc:mariadb://helmi:3306/brentj";
 
-    try {
-      Statement stmt;
-      ResultSet rs;
+            // Get a connection to the database
+            con = DriverManager.getConnection(url, "brentj", "CHANGE ME ON INDIVIDUAL MACHINE");
 
-      // Define URL of database server for
-      // database named 'user' on the faure.
-      String url =
-            "jdbc:mariadb://helmi:3306/brentj";
+            // Display URL and connection information
+            System.out.println("URL: " + url);
+            System.out.println("Connection: " + con);
 
-      // Get a connection to the database for a
-      // user named 'user' with the password
-      // password.
-      con = DriverManager.getConnection(
-                        url,"brentj", "CHANGE ME ON INDIVIDUAL MACHINE");
+            // Get a Statement object
+            Statement stmt = con.createStatement();
 
-      // Display URL and connection information
-      System.out.println("URL: " + url);
-      System.out.println("Connection: " + con);
+            try {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM Author");
 
-      // Get a Statement object
-      stmt = con.createStatement();
+                while (rs.next()) {
+                    System.out.println(rs.getString("AuthorID"));
+                }
 
-	try{
-        rs = stmt.executeQuery("SELECT * FROM Author");
-        while (rs.next()) {
-          System.out.println (rs.getString("AuthorID"));
-      }
-      }catch(Exception e){
-        System.out.print(e);
-        System.out.println(
-                  "No Author table to query");
-      }//end catch
+                rs.close();
+                stmt.close();
 
-      con.close();
-    }catch( Exception e ) {
-      e.printStackTrace();
+            } catch (SQLException e) {
+                System.out.println("No Author table to query: " + e.getMessage());
+            }
 
-    }//end catch
+            con.close();
 
-  }//end main
-
-}//end class Lab4A_ex
+        } catch (Exception e) {
+            System.out.println("Database connection failed: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
