@@ -10,7 +10,7 @@ public class Lab9 {
 
     private static final String DB_URL = "jdbc:mariadb://helmi:3306/brentj";
     private static final String USER = "brentj";
-    private static final String PASS = "your_password";
+    private static final String PASS = "Change Me";
     private Connection conn;
 
     public void readXML(String fileName) {
@@ -98,7 +98,7 @@ public class Lab9 {
     public static void main(String[] args) {
         try {
             Lab9 lab = new Lab9();
-            lab.readXML("/s/bach/a/class/cs430dl/Current/more_assignments/LabData/Libdata.xml");
+            lab.readXML("/s/bach/j/under/brentj/Documents/CS430/CS430/L9/Libdata.xml");
         } catch (Exception e) {
             e.printStackTrace();
         }
