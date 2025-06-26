@@ -8,8 +8,8 @@ import org.w3c.dom.*;
 
 public class Lab9 {
 
-    private static final String DB_URL = "jdbc:mariadb://helmi:3306/your_eID";
-    private static final String USER = "your_eID";
+    private static final String DB_URL = "jdbc:mariadb://helmi:3306/brentj";
+    private static final String USER = "brentj";
     private static final String PASS = "your_password";
     private Connection conn;
 
