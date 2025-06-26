@@ -1,5 +1,5 @@
 package L9;
-
+// SELECT * FROM Borrowed WHERE MemberID = 2011 AND ISBN = '96-42103-10800' AND LibraryID = 1 AND DateReturned IS NULL;
 import java.io.File;
 import java.sql.*;
 import javax.xml.parsers.DocumentBuilder;
@@ -142,7 +142,12 @@ public class Lab9 {
         try {
             PreparedStatement ps = conn.prepareStatement(query);
             for (int i = 0; i < params.length; i++) {
-                ps.setString(i + 1, params[i]);
+                try {
+					int intVal = Integer.parseInt(params[i]);
+					ps.setInt(i + 1, intVal);
+				} catch (NumberFormatException e) {
+					ps.setString(i + 1, params[i]);  // Fallback if not integer
+				}
             }
             ResultSet rs = ps.executeQuery();
             return rs.next();
