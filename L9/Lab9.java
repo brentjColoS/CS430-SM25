@@ -32,8 +32,12 @@ public class Lab9 {
 
                     String memberID = sectionNode.getElementsByTagName("MemberID").item(0).getTextContent().trim();
                     String isbn = sectionNode.getElementsByTagName("ISBN").item(0).getTextContent().trim();
-                    String checkoutDate = sectionNode.getElementsByTagName("Checkout_date").item(0).getTextContent().trim();
-                    String checkinDate = sectionNode.getElementsByTagName("Checkin_date").item(0).getTextContent().trim();
+
+                    String checkoutDateRaw = sectionNode.getElementsByTagName("Checkout_date").item(0).getTextContent().trim();
+                    String checkinDateRaw = sectionNode.getElementsByTagName("Checkin_date").item(0).getTextContent().trim();
+
+                    String checkoutDate = reformatDate(checkoutDateRaw);
+                    String checkinDate = reformatDate(checkinDateRaw);
 
                     if (!exists("SELECT * FROM Member WHERE MemberID = ?", memberID)) {
                         System.out.println("ERROR: MemberID " + memberID + " not found.");
@@ -45,7 +49,7 @@ public class Lab9 {
                         continue;
                     }
 
-                    if (!checkinDate.isEmpty()) {
+                    if (checkinDate != null && !checkinDate.isEmpty()) {
                         // It's a checkin
                         if (exists("SELECT * FROM Borrowed WHERE MemberID = ? AND ISBN = ? AND DateReturned IS NULL", memberID, isbn)) {
                             PreparedStatement ps = conn.prepareStatement(
@@ -79,6 +83,19 @@ public class Lab9 {
             System.out.println("ERROR: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    // Reformat dates from MM/DD/YYYY to YYYY-MM-DD
+    private String reformatDate(String mmddyyyy) {
+        try {
+            String[] parts = mmddyyyy.split("/");
+            if (parts.length == 3) {
+                return parts[2] + "-" + parts[0] + "-" + parts[1];
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR formatting date: " + mmddyyyy);
+        }
+        return null;
     }
 
     private boolean exists(String query, String... params) {
