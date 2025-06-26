@@ -1,6 +1,6 @@
 -- Library Database Schema
--- CS 430 | Lab 7
--- Due 6/17/2025 11:59 PM
+-- CS 430 | Lab 9
+-- Due 6/25/2025 11:59 PM
 -- Written by Brent Jackson
 
 -- Drop any tables if they exist that way there are no conflicts for multiple runs of the script
