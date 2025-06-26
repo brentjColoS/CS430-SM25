@@ -32,12 +32,12 @@ public class Lab9 {
 
                     String memberID = sectionNode.getElementsByTagName("MemberID").item(0).getTextContent().trim();
                     String isbn = sectionNode.getElementsByTagName("ISBN").item(0).getTextContent().trim();
-
+                    String libraryName = sectionNode.getElementsByTagName("Library").item(0).getTextContent().trim();
                     String checkoutDateRaw = sectionNode.getElementsByTagName("Checkout_date").item(0).getTextContent().trim();
                     String checkinDateRaw = sectionNode.getElementsByTagName("Checkin_date").item(0).getTextContent().trim();
 
-                    String checkoutDate = reformatDate(checkoutDateRaw);
-                    String checkinDate = reformatDate(checkinDateRaw);
+                    String checkoutDate = "N/A".equalsIgnoreCase(checkoutDateRaw) ? null : reformatDate(checkoutDateRaw);
+                    String checkinDate = "N/A".equalsIgnoreCase(checkinDateRaw) ? null : reformatDate(checkinDateRaw);
 
                     if (!exists("SELECT * FROM Member WHERE MemberID = ?", memberID)) {
                         System.out.println("ERROR: MemberID " + memberID + " not found.");
@@ -49,30 +49,48 @@ public class Lab9 {
                         continue;
                     }
 
-                    if (checkinDate != null && !checkinDate.isEmpty()) {
-                        // It's a checkin
-                        if (exists("SELECT * FROM Borrowed WHERE MemberID = ? AND ISBN = ? AND DateReturned IS NULL", memberID, isbn)) {
+                    Integer libraryID = getLibraryIDByName(libraryName);
+                    if (libraryID == null) {
+                        System.out.println("ERROR: Library name '" + libraryName + "' not found.");
+                        continue;
+                    }
+
+                    if (checkinDate != null) {
+                        // Checkin
+                        if (exists("SELECT * FROM Borrowed WHERE MemberID = ? AND ISBN = ? AND LibraryID = ? AND DateReturned IS NULL",
+                                   memberID, isbn, libraryID.toString())) {
                             PreparedStatement ps = conn.prepareStatement(
-                                "UPDATE Borrowed SET DateReturned = ? WHERE MemberID = ? AND ISBN = ? AND DateReturned IS NULL"
+                                "UPDATE Borrowed SET DateReturned = ? WHERE MemberID = ? AND ISBN = ? AND LibraryID = ? AND DateReturned IS NULL"
                             );
                             ps.setString(1, checkinDate);
                             ps.setString(2, memberID);
                             ps.setString(3, isbn);
+                            ps.setInt(4, libraryID);
                             ps.executeUpdate();
-                            System.out.println("Checkin updated: MemberID " + memberID + ", ISBN " + isbn);
+                            System.out.println("Checkin updated: MemberID " + memberID + ", ISBN " + isbn + ", Library: " + libraryName);
                         } else {
-                            System.out.println("ERROR: No matching checkout found to check in for MemberID " + memberID + ", ISBN " + isbn);
+                            System.out.println("ERROR: No open checkout found to check in: MemberID " + memberID + ", ISBN " + isbn + ", Library: " + libraryName);
                         }
-                    } else {
-                        // It's a checkout
+                    } else if (checkoutDate != null) {
+                        // Duplicate checkout prevention
+                        if (exists("SELECT * FROM Borrowed WHERE MemberID = ? AND ISBN = ? AND LibraryID = ? AND DateReturned IS NULL",
+                                   memberID, isbn, libraryID.toString())) {
+                            System.out.println("ERROR: Duplicate checkout attempt - MemberID " + memberID + ", ISBN " + isbn + ", Library: " + libraryName);
+                            continue;
+                        }
+
+                        // Insert checkout
                         PreparedStatement ps = conn.prepareStatement(
-                            "INSERT INTO Borrowed (MemberID, ISBN, DateBorrowed, DateReturned) VALUES (?, ?, ?, NULL)"
+                            "INSERT INTO Borrowed (MemberID, ISBN, DateBorrowed, DateReturned, LibraryID) VALUES (?, ?, ?, NULL, ?)"
                         );
                         ps.setString(1, memberID);
                         ps.setString(2, isbn);
                         ps.setString(3, checkoutDate);
+                        ps.setInt(4, libraryID);
                         ps.executeUpdate();
-                        System.out.println("Checkout recorded: MemberID " + memberID + ", ISBN " + isbn);
+                        System.out.println("Checkout recorded: MemberID " + memberID + ", ISBN " + isbn + ", Library: " + libraryName);
+                    } else {
+                        System.out.println("ERROR: Missing both Checkout and Checkin dates for MemberID " + memberID + ", ISBN " + isbn);
                     }
                 }
             }
@@ -85,7 +103,7 @@ public class Lab9 {
         }
     }
 
-    // Reformat dates from MM/DD/YYYY to YYYY-MM-DD
+    // Convert MM/DD/YYYY → YYYY-MM-DD
     private String reformatDate(String mmddyyyy) {
         try {
             String[] parts = mmddyyyy.split("/");
@@ -98,6 +116,22 @@ public class Lab9 {
         return null;
     }
 
+    // Look up LibraryID from Library name
+    private Integer getLibraryIDByName(String libraryName) {
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT LibraryID FROM Library WHERE Name = ?");
+            ps.setString(1, libraryName);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("LibraryID");
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR looking up LibraryID: " + e.getMessage());
+        }
+        return null;
+    }
+
+    // General record existence checker
     private boolean exists(String query, String... params) {
         try {
             PreparedStatement ps = conn.prepareStatement(query);
