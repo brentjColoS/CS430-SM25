@@ -135,33 +135,9 @@ INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10907', '
 INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-11003', 'Missing Tomorrow', 10001, '2005-09-01');
 
 --Library -> South Park
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10001', 'How to Grow Tomatoes', 10006, '1963-02-10');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10002', 'Mr. Smith Goes to Washington', 10007, '2010-03-23');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10003', 'Studying is Your Friend', 10000, '1955-04-11');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10004', 'To Have and To Cherish', 10003, '2011-06-01');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10005', 'Hal Finds a Home', 10003, '2001-03-15');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10006', 'Last Train to Clarksville', 10004, '1999-10-30');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10007', 'How to Digitally Sign', 10004, '2003-11-21');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10008', 'Sam Needs a Friend', 10005, '2013-12-23');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10009', 'Downton Abbey', 10002, '2005-12-14');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10011', 'Database Theory', 10001, '2010-01-14');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10022', 'Challenging Puzzles', 10001, '1988-03-15');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10033', 'American Football', 10006, '2011-02-08');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10040', 'Where to Start', 10003, '2012-05-09');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10054', 'Lacey Discovers Herself', 10002, '2013-06-12');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10068', 'Mr. Ed', 10001, '2009-09-03');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10081', 'Escape from Gilligans Island', 10000, '2009-03-29');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10093', 'Fixing Computers', 10000, '2010-01-29');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10109', 'Red Burn', 10000, '2011-01-20');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10206', 'Taks McGrill', 10003, '2000-02-21');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10300', 'Eating Healthy', 10004, '1999-02-16');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10401', 'How to Grow Cucumbers', 10006, '1945-03-14');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10502', 'Gardening Tips', 10007, '1973-08-16');
 INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-11604', 'Eating in the Fort', 10002, '1993-01-09');
 INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-11709', 'Green Eggs', 10003, '1983-01-05');
 INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-11800', 'Blue is Your Friend', 10002, '2010-03-20');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-10907', 'Cubs Win!', 10002, '2005-06-02');
-INSERT INTO Book (ISBN, Title, PubID, YearPublished) VALUES ('96-42103-11003', 'Missing Tomorrow', 10001, '2005-09-01');
 
 -- Insert LocatedAt (Library ID 1 refers to Main, Library ID 2 refers to South Park)
 INSERT INTO LocatedAt (ISBN, LibraryID, Shelf, Floor, TotalCopies, CopiesNotCheckedOut) VALUES ('96-42103-10001', 1, 1, 1, 3, 3);
