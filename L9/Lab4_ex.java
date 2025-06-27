@@ -1,5 +1,3 @@
-package L9;
-
 import java.sql.*;
 
 public class Lab4_ex {
