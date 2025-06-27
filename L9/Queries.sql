@@ -11,8 +11,10 @@ ORDER BY MemberID, ISBN;
 -- print Last name, First name, MemberID, Title, and Library name
 
 SELECT 
-    M.LastName, 
-    M.FirstName, 
+    CONCAT(
+        SUBSTRING_INDEX(M.Name, ' ', -1), ' ',
+        SUBSTRING_INDEX(M.Name, ' ', 1)
+    ) AS MemberName,
     M.MemberID, 
     B.Title, 
     L.Name AS LibraryName
@@ -27,4 +29,4 @@ JOIN
 WHERE 
     BR.DateReturned IS NULL
 ORDER BY 
-    M.LastName, M.FirstName, B.Title;
+    MemberName, B.Title;
