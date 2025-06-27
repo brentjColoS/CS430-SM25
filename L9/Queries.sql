@@ -10,6 +10,7 @@ ORDER BY MemberID, ISBN;
 -- Task 5b: For each member with a book currently checked out,
 -- print Last name, First name, MemberID, Title, and Library name
 
+-- The CONCAT is to break apart the Member Name into first/last and order it correctly for this call
 SELECT 
     CONCAT(
         SUBSTRING_INDEX(M.Name, ' ', -1), ' ',
