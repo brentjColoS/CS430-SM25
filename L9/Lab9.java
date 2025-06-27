@@ -1,5 +1,3 @@
-package L9;
-// SELECT * FROM Borrowed WHERE MemberID = 2011 AND ISBN = '96-42103-10800' AND LibraryID = 1 AND DateReturned IS NULL;
 import java.io.File;
 import java.sql.*;
 import javax.xml.parsers.DocumentBuilder;
