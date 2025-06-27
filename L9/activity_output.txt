@@ -1,0 +1,16 @@
+Checkin updated: MemberID 2011, ISBN 96-42103-10800, Library: Main
+Checkout recorded: MemberID 2011, ISBN 96-42103-10011, Library: South Park
+Checkout recorded: MemberID 2011, ISBN 96-42103-10006, Library: Main
+Checkin updated: MemberID 2012, ISBN 96-42103-10002, Library: Main
+ERROR: Book ISBN 96-42103-10604 not found at Library South Park
+Checkout recorded: MemberID 2012, ISBN 96-42103-10709, Library: Main
+ERROR: ISBN 97-34506-10709 not found.
+Checkout recorded: MemberID 1400, ISBN 96-42103-10022, Library: South Park
+Checkin updated: MemberID 2020, ISBN 96-42103-10401, Library: Main
+ERROR: Book ISBN 96-42103-10709 not found at Library South Park
+Checkin updated: MemberID 2022, ISBN 96-42103-11003, Library: Main
+ERROR: No open checkout found to check in: MemberID 2022, ISBN 96-42103-10109, Library: Main
+Checkout recorded: MemberID 2022, ISBN 96-42103-10093, Library: South Park
+ERROR: ISBN 97-12413-10093 not found.
+Checkout recorded: MemberID 1800, ISBN 96-42103-10093, Library: Main
+ERROR: Book ISBN 96-42103-11709 not found at Library Main
