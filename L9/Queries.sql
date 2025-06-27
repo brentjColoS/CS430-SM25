@@ -11,15 +11,20 @@ ORDER BY MemberID, ISBN;
 -- print Last name, First name, MemberID, Title, and Library name
 
 SELECT 
-    m.LastName,
-    m.FirstName,
-    m.MemberID,
-    b.Title AS BookTitle,
-    l.Name AS LibraryName
-FROM Borrowed br
-JOIN Member m ON br.MemberID = m.MemberID
-JOIN Book b ON br.ISBN = b.ISBN
-JOIN LocatedAt la ON la.ISBN = b.ISBN
-JOIN Library l ON l.LibraryID = la.LibraryID
-WHERE br.DateReturned IS NULL
-ORDER BY m.LastName, m.FirstName, b.Title;
+    M.LastName, 
+    M.FirstName, 
+    M.MemberID, 
+    B.Title, 
+    L.Name AS LibraryName
+FROM 
+    Borrowed BR
+JOIN 
+    Member M ON BR.MemberID = M.MemberID
+JOIN 
+    Book B ON BR.ISBN = B.ISBN
+JOIN 
+    Library L ON BR.LibraryID = L.LibraryID
+WHERE 
+    BR.DateReturned IS NULL
+ORDER BY 
+    M.LastName, M.FirstName, B.Title;
