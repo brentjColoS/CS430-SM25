@@ -2,6 +2,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class LibraryGUI {
@@ -142,12 +143,14 @@ public class LibraryGUI {
             );
             ps.setString(1, isbn);
             ResultSet rs = ps.executeQuery();
+            
+            System.out.println();
 
             boolean found = false;
             while (rs.next()) {
                 found = true;
                 int available = rs.getInt("AvailableCopies");
-                System.out.println();
+                //System.out.println();
                 System.out.println("Title: " + rs.getString("Title"));
                 System.out.println("Library: " + rs.getString("LibraryName"));
                 System.out.println("Floor: " + rs.getString("Floor"));
@@ -202,7 +205,6 @@ public class LibraryGUI {
 
                 System.out.print("Enter number to select title: ");
                 String choiceStr = sc.nextLine().trim();
-                System.out.println();
 
                 int choice;
                 try {
