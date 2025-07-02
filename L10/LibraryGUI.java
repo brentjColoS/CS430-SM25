@@ -1,7 +1,7 @@
-import javax.swing.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.Scanner;
 
 public class LibraryGUI {
 
@@ -9,54 +9,68 @@ public class LibraryGUI {
     private static final String USER = "brentj";
     private static final String PASS = "Change Me";
     private Connection conn;
+    private Scanner sc;
 
     public LibraryGUI() {
+        sc = new Scanner(System.in);
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException e) {
-            showError("Connection failed: " + e.getMessage());
+            System.out.println("Connection failed: " + e.getMessage());
+            System.exit(1);
         }
     }
 
     public void run() {
         while (true) {
-            String input = JOptionPane.showInputDialog(null, "Enter Member ID (or Cancel to quit):");
-            if (input == null) break;
+            System.out.print("Enter Member ID (or 'exit' to quit): ");
+            String input = sc.nextLine().trim();
+            if (input.equalsIgnoreCase("exit")) break;
 
             int memberID;
             try {
-                memberID = Integer.parseInt(input.trim());
+                memberID = Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                showError("Invalid ID.");
+                System.out.println("Invalid ID. Must be an integer.");
                 continue;
             }
 
             if (!memberExists(memberID)) {
-                int add = JOptionPane.showConfirmDialog(null, "Member not found. Add new member?", "Add Member", JOptionPane.YES_NO_OPTION);
-                if (add == JOptionPane.YES_OPTION) {
+                System.out.print("Member not found. Add new member? (Y/N): ");
+                String add = sc.nextLine().trim().toUpperCase();
+                if (add.equals("Y")) {
                     addNewMember(memberID);
                 } else {
                     continue;
                 }
             }
 
-            String[] options = { "ISBN", "Partial Book Title", "Author Name" };
-            int choice = JOptionPane.showOptionDialog(null, "Search by:", "Book Search",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            System.out.println("Search by:");
+            System.out.println("1. ISBN");
+            System.out.println("2. Partial Book Title");
+            System.out.println("3. Author Name");
+            System.out.print("Choice (1-3): ");
+            String choice = sc.nextLine().trim();
 
-            if (choice == 0) {
-                String isbn = JOptionPane.showInputDialog("Enter ISBN:");
-                if (isbn != null) searchByISBN(isbn.trim());
-            } else if (choice == 1) {
-                String title = JOptionPane.showInputDialog("Enter part of book title:");
-                if (title != null) searchByTitle(title.trim());
-            } else if (choice == 2) {
-                String author = JOptionPane.showInputDialog("Enter author name:");
-                if (author != null) searchByAuthor(author.trim());
+            if (choice.equals("1")) {
+                System.out.print("Enter ISBN: ");
+                String isbn = sc.nextLine().trim();
+                searchByISBN(isbn);
+            } else if (choice.equals("2")) {
+                System.out.print("Enter part of book title: ");
+                String title = sc.nextLine().trim();
+                searchByTitle(title);
+            } else if (choice.equals("3")) {
+                System.out.print("Enter author name: ");
+                String author = sc.nextLine().trim();
+                searchByAuthor(author);
+            } else {
+                System.out.println("Invalid choice.");
             }
         }
 
         closeConn();
+        sc.close();
     }
 
     private boolean memberExists(int memberID) {
@@ -66,35 +80,38 @@ public class LibraryGUI {
             ResultSet rs = ps.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            showError("Error checking member: " + e.getMessage());
+            System.out.println("Error checking member: " + e.getMessage());
             return false;
         }
     }
 
     private void addNewMember(int memberID) {
         try {
-            String name = JOptionPane.showInputDialog("Enter full name:");
-            if (name == null || name.trim().isEmpty()) {
-                showError("Name cannot be empty.");
+            System.out.print("Enter full name: ");
+            String name = sc.nextLine().trim();
+            if (name.isEmpty()) {
+                System.out.println("Name cannot be empty.");
                 return;
             }
 
-            String gender = JOptionPane.showInputDialog("Enter gender (M/F):");
-            if (gender == null) return;
-            gender = gender.trim().toUpperCase();
-            if (!gender.equals("M") && !gender.equals("F")) {
-                showError("Invalid gender. Must be 'M' or 'F'.");
-                return;
+            String gender;
+            while (true) {
+                System.out.print("Enter gender (M/F): ");
+                gender = sc.nextLine().trim().toUpperCase();
+                if (gender.equals("M") || gender.equals("F")) break;
+                System.out.println("Invalid gender. Must be 'M' or 'F'.");
             }
 
-            String dob = JOptionPane.showInputDialog("Enter date of birth (YYYY-MM-DD):");
-            if (dob == null) return;
-            dob = dob.trim();
-            try {
-                LocalDate.parse(dob);
-            } catch (DateTimeParseException e) {
-                showError("Invalid date format. Use YYYY-MM-DD.");
-                return;
+            String dob;
+            while (true) {
+                System.out.print("Enter date of birth (YYYY-MM-DD): ");
+                dob = sc.nextLine().trim();
+                try {
+                    LocalDate.parse(dob);
+                    break;
+                } catch (DateTimeParseException e) {
+                    System.out.println("Invalid date format. Use YYYY-MM-DD.");
+                }
             }
 
             PreparedStatement ps = conn.prepareStatement("INSERT INTO Member (MemberID, Name, Gender, DateOfBirth) VALUES (?, ?, ?, ?)");
@@ -103,9 +120,9 @@ public class LibraryGUI {
             ps.setString(3, gender);
             ps.setString(4, dob);
             ps.executeUpdate();
-            showMessage("New member added.");
+            System.out.println("New member added.");
         } catch (SQLException e) {
-            showError("Error adding member: " + e.getMessage());
+            System.out.println("Error adding member: " + e.getMessage());
         }
     }
 
@@ -122,25 +139,25 @@ public class LibraryGUI {
             ps.setString(1, isbn);
             ResultSet rs = ps.executeQuery();
 
-            StringBuilder result = new StringBuilder();
+            boolean found = false;
             while (rs.next()) {
+                found = true;
                 int available = rs.getInt("AvailableCopies");
-                result.append("Title: ").append(rs.getString("Title"))
-                      .append("\nLibrary: ").append(rs.getString("LibraryName"))
-                      .append("\nShelf: ").append(rs.getString("Shelf"));
+                System.out.println("Title: " + rs.getString("Title"));
+                System.out.println("Library: " + rs.getString("LibraryName"));
+                System.out.println("Shelf: " + rs.getString("Shelf"));
                 if (available > 0) {
-                    result.append("\nCopies available: ").append(available).append("\n\n");
+                    System.out.println("Copies available: " + available);
                 } else {
-                    result.append("\nAll copies are currently checked out.\n\n");
+                    System.out.println("All copies are currently checked out.");
                 }
+                System.out.println();
             }
-            if (result.length() == 0) {
-                showMessage("This ISBN does not exist in any library.");
-            } else {
-                showMessage(result.toString());
+            if (!found) {
+                System.out.println("This ISBN does not exist in any library.");
             }
         } catch (SQLException e) {
-            showError("Error searching by ISBN: " + e.getMessage());
+            System.out.println("Error searching by ISBN: " + e.getMessage());
         }
     }
 
@@ -152,19 +169,18 @@ public class LibraryGUI {
             ps.setString(1, "%" + title + "%");
             ResultSet rs = ps.executeQuery();
 
-            StringBuilder result = new StringBuilder();
+            boolean found = false;
             while (rs.next()) {
-                result.append("ISBN: ").append(rs.getString("ISBN"))
-                      .append("\nTitle: ").append(rs.getString("Title"))
-                      .append("\n\n");
+                found = true;
+                System.out.println("ISBN: " + rs.getString("ISBN"));
+                System.out.println("Title: " + rs.getString("Title"));
+                System.out.println();
             }
-            if (result.length() == 0) {
-                showMessage("No titles matching that found.");
-            } else {
-                showMessage(result.toString());
+            if (!found) {
+                System.out.println("No titles matching that found.");
             }
         } catch (SQLException e) {
-            showError("Error searching by title: " + e.getMessage());
+            System.out.println("Error searching by title: " + e.getMessage());
         }
     }
 
@@ -180,19 +196,18 @@ public class LibraryGUI {
             ps.setString(2, "%" + author + "%");
             ResultSet rs = ps.executeQuery();
 
-            StringBuilder result = new StringBuilder();
+            boolean found = false;
             while (rs.next()) {
-                result.append("ISBN: ").append(rs.getString("ISBN"))
-                      .append("\nTitle: ").append(rs.getString("Title"))
-                      .append("\n\n");
+                found = true;
+                System.out.println("ISBN: " + rs.getString("ISBN"));
+                System.out.println("Title: " + rs.getString("Title"));
+                System.out.println();
             }
-            if (result.length() == 0) {
-                showMessage("No books found by that author.");
-            } else {
-                showMessage(result.toString());
+            if (!found) {
+                System.out.println("No books found by that author.");
             }
         } catch (SQLException e) {
-            showError("Error searching by author: " + e.getMessage());
+            System.out.println("Error searching by author: " + e.getMessage());
         }
     }
 
@@ -200,16 +215,8 @@ public class LibraryGUI {
         try {
             if (conn != null) conn.close();
         } catch (SQLException e) {
-            showError("Error closing connection: " + e.getMessage());
+            System.out.println("Error closing connection: " + e.getMessage());
         }
-    }
-
-    private void showMessage(String message) {
-        JOptionPane.showMessageDialog(null, message);
-    }
-
-    private void showError(String error) {
-        JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     public static void main(String[] args) {
