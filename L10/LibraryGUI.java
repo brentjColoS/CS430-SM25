@@ -2,7 +2,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class LibraryGUI {
@@ -312,16 +311,60 @@ public class LibraryGUI {
             ps.setInt(1, chosenID);
             rs = ps.executeQuery();
 
-            boolean found = false;
+            ArrayList<String> bookIsbns = new ArrayList<>();
+            ArrayList<String> bookTitles = new ArrayList<>();
+
             while (rs.next()) {
-                found = true;
-                System.out.println("ISBN: " + rs.getString("ISBN"));
-                System.out.println("Title: " + rs.getString("Title"));
-                System.out.println();
+                bookIsbns.add(rs.getString("ISBN"));
+                bookTitles.add(rs.getString("Title"));
             }
-            if (!found) {
+
+            if (bookIsbns.isEmpty()) {
                 System.out.println("This author has no books in the library.");
                 System.out.println();
+                return;
+            }
+
+            // Display books and prompt for selection
+            if (bookIsbns.size() == 1) {
+                System.out.println("Title: " + bookTitles.get(0));
+                System.out.println("ISBN: " + bookIsbns.get(0));
+                System.out.println();
+
+                // Show detailed library info for this book
+                searchByISBN(bookIsbns.get(0));
+            } else {
+                System.out.println("Books by this author:");
+                for (int i = 0; i < bookTitles.size(); i++) {
+                    System.out.println((i + 1) + ". " + bookTitles.get(i) + " (ISBN: " + bookIsbns.get(i) + ")");
+                }
+                System.out.println();
+
+                System.out.print("Enter number to select book: ");
+                String choiceStr = sc.nextLine().trim();
+                System.out.println();
+
+                int choice;
+                try {
+                    choice = Integer.parseInt(choiceStr);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input.");
+                    System.out.println();
+                    return;
+                }
+                if (choice < 1 || choice > bookIsbns.size()) {
+                    System.out.println("Invalid choice.");
+                    System.out.println();
+                    return;
+                }
+
+                // Show selected book details
+                System.out.println("Title: " + bookTitles.get(choice - 1));
+                System.out.println("ISBN: " + bookIsbns.get(choice - 1));
+                System.out.println();
+
+                // Show detailed library info for selected book
+                searchByISBN(bookIsbns.get(choice - 1));
             }
 
         } catch (SQLException e) {
@@ -329,6 +372,7 @@ public class LibraryGUI {
             System.out.println();
         }
     }
+
 
     private void closeConn() {
         try {
