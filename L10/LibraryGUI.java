@@ -144,8 +144,10 @@ public class LibraryGUI {
             while (rs.next()) {
                 found = true;
                 int available = rs.getInt("AvailableCopies");
+                System.out.println();
                 System.out.println("Title: " + rs.getString("Title"));
                 System.out.println("Library: " + rs.getString("LibraryName"));
+                System.out.println("Floor: " + rs.getString("Floor"));
                 System.out.println("Shelf: " + rs.getString("Shelf"));
                 if (available > 0) {
                     System.out.println("Copies available: " + available);
@@ -171,6 +173,7 @@ public class LibraryGUI {
             boolean found = false;
             while (rs.next()) {
                 found = true;
+                System.out.println();
                 System.out.println("ISBN: " + rs.getString("ISBN"));
                 System.out.println("Title: " + rs.getString("Title"));
                 System.out.println();
@@ -198,38 +201,53 @@ public class LibraryGUI {
 
             while (rs.next()) {
                 ids.add(rs.getInt("AuthorID"));
-                names.add(rs.getString("LastName") + " " + rs.getString("FirstName"));
+                names.add(rs.getString("FirstName") + " " + rs.getString("LastName"));
             }
 
             if (ids.isEmpty()) {
                 System.out.println("No authors found matching: " + authorPart);
+                System.out.println();
                 return;
             }
 
-            // If multiple matches, ask user to pick
             int chosenID;
+            String chosenName;
+
+            // If multiple matches, ask user to pick
             if (ids.size() == 1) {
                 chosenID = ids.get(0);
+                chosenName = names.get(0);
             } else {
                 System.out.println("Multiple authors found:");
                 for (int i = 0; i < names.size(); i++) {
                     System.out.println((i + 1) + ". " + names.get(i));
                 }
+                System.out.println();
+
                 System.out.print("Enter number to select author: ");
                 String choiceStr = sc.nextLine().trim();
+                System.out.println();
+
                 int choice;
                 try {
                     choice = Integer.parseInt(choiceStr);
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input.");
+                    System.out.println();
                     return;
                 }
                 if (choice < 1 || choice > ids.size()) {
                     System.out.println("Invalid choice.");
+                    System.out.println();
                     return;
                 }
                 chosenID = ids.get(choice - 1);
+                chosenName = names.get(choice - 1);
             }
+
+            // Print selected author
+            System.out.println("Author: " + chosenName);
+            System.out.println();
 
             // Query books by selected author
             ps = conn.prepareStatement(
@@ -249,14 +267,14 @@ public class LibraryGUI {
             }
             if (!found) {
                 System.out.println("This author has no books in the library.");
+                System.out.println();
             }
 
         } catch (SQLException e) {
             System.out.println("Error searching by author: " + e.getMessage());
+            System.out.println();
         }
     }
-
-
 
     private void closeConn() {
         try {
