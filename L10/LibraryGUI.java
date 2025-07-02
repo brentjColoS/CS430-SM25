@@ -2,6 +2,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class LibraryGUI {
@@ -246,6 +247,7 @@ public class LibraryGUI {
             }
 
             // Print selected author
+            System.out.println();
             System.out.println("Author: " + chosenName);
             System.out.println();
 
