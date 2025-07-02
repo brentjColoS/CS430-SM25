@@ -187,17 +187,18 @@ public class LibraryGUI {
         try {
             // First find matching authors
             PreparedStatement ps = conn.prepareStatement(
-                "SELECT AuthorID, Name FROM Author WHERE Name LIKE ?;"
+                "SELECT AuthorID, LastName, FirstName FROM Author WHERE LastName LIKE ? OR FirstName LIKE ?;"
             );
             ps.setString(1, "%" + authorPart + "%");
+            ps.setString(2, "%" + authorPart + "%");
             ResultSet rs = ps.executeQuery();
 
-            // Collect matches
             ArrayList<Integer> ids = new ArrayList<>();
             ArrayList<String> names = new ArrayList<>();
+
             while (rs.next()) {
                 ids.add(rs.getInt("AuthorID"));
-                names.add(rs.getString("Name"));
+                names.add(rs.getString("LastName") + " " + rs.getString("FirstName"));
             }
 
             if (ids.isEmpty()) {
@@ -215,7 +216,14 @@ public class LibraryGUI {
                     System.out.println((i + 1) + ". " + names.get(i));
                 }
                 System.out.print("Enter number to select author: ");
-                int choice = Integer.parseInt(sc.nextLine().trim());
+                String choiceStr = sc.nextLine().trim();
+                int choice;
+                try {
+                    choice = Integer.parseInt(choiceStr);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input.");
+                    return;
+                }
                 if (choice < 1 || choice > ids.size()) {
                     System.out.println("Invalid choice.");
                     return;
@@ -245,10 +253,9 @@ public class LibraryGUI {
 
         } catch (SQLException e) {
             System.out.println("Error searching by author: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input.");
         }
     }
+
 
 
     private void closeConn() {
