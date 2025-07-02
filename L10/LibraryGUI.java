@@ -67,18 +67,18 @@ public class LibraryGUI {
             String choice = sc.nextLine().trim();
 
             if (choice.equals("1")) {
-                System.out.println("│" + repeatChar("═", 23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
 
                 System.out.print("Enter ISBN: ");
                 String isbn = sc.nextLine().trim();
                 searchByISBN(isbn);
             } else if (choice.equals("2")) {
-                System.out.println("│" + "═".repeat(23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
                 System.out.print("Enter part (or all) of book title: ");
                 String title = sc.nextLine().trim();
                 searchByTitle(title);
             } else if (choice.equals("3")) {
-                System.out.println("│" + repeatChar("═", 23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
 
                 System.out.print("Enter author name or part of it: ");
                 String author = sc.nextLine().trim();
@@ -203,14 +203,14 @@ public class LibraryGUI {
                 }
             }
 
-            System.out.println("│" + repeatChar("═", 23) + "│");
+            System.out.println("│" + repeatChar("═", 48) + "│");
 
 
             if (!bookInStock) {
                 System.out.println("This library system does not currently have the book in stock.");
             } else {
                 System.out.println("Title: " + bookTitle);
-                System.out.println("│" + repeatChar("═", 23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
 
                 if (anyAvailable) {
                     for (String s : availableInfo) {
@@ -221,7 +221,7 @@ public class LibraryGUI {
                 }
             }
 
-            System.out.println("│" + repeatChar("═", 23) + "│");
+            System.out.println("│" + repeatChar("═", 48) + "│");
 
 
         } catch (SQLException e) {
@@ -248,7 +248,7 @@ public class LibraryGUI {
 
             if (isbns.isEmpty()) {
                 System.out.println("No titles matching that found.");
-                System.out.println("│" + repeatChar("═", 23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
 
                 return;
             }
@@ -262,7 +262,7 @@ public class LibraryGUI {
                 for (int i = 0; i < titles.size(); i++) {
                     System.out.println((i + 1) + ". " + titles.get(i) + " (ISBN: " + isbns.get(i) + ")");
                 }
-                System.out.println("│" + repeatChar("═", 23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
 
 
                 System.out.print("Enter number to select title: ");
@@ -273,14 +273,14 @@ public class LibraryGUI {
                     choice = Integer.parseInt(choiceStr);
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input.");
-                    System.out.println("│" + repeatChar("═", 23) + "│");
+                    System.out.println("│" + repeatChar("═", 48) + "│");
 
                     return;
                 }
 
                 if (choice < 1 || choice > isbns.size()) {
                     System.out.println("Invalid choice.");
-                    System.out.println("│" + repeatChar("═", 23) + "│");
+                    System.out.println("│" + repeatChar("═", 48) + "│");
 
                     return;
                 }
@@ -322,11 +322,11 @@ public class LibraryGUI {
                 }
             }
 
-            System.out.println("│" + repeatChar("═", 23) + "│");
+            System.out.println("│" + repeatChar("═", 48) + "│");
 
             System.out.println("Title: " + titles.get(chosenIndex));
             System.out.println("ISBN: " + selectedISBN);
-            System.out.println("│" + repeatChar("═", 23) + "│");
+            System.out.println("│" + repeatChar("═", 48) + "│");
 
 
             if (!bookInStock) {
@@ -339,12 +339,12 @@ public class LibraryGUI {
                 System.out.println("All copies of this book are currently checked out at all libraries.");
             }
 
-            System.out.println("│" + repeatChar("═", 23) + "│");
+            System.out.println("│" + repeatChar("═", 48) + "│");
 
 
         } catch (SQLException e) {
             System.out.println("Error searching by title: " + e.getMessage());
-            System.out.println("│" + repeatChar("═", 23) + "│");
+            System.out.println("│" + repeatChar("═", 48) + "│");
 
         }
     }
@@ -369,7 +369,7 @@ public class LibraryGUI {
 
             if (ids.isEmpty()) {
                 System.out.println("No authors found matching: " + authorPart);
-                System.out.println("│" + repeatChar("═", 23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
 
                 return;
             }
@@ -386,12 +386,12 @@ public class LibraryGUI {
                 for (int i = 0; i < names.size(); i++) {
                     System.out.println((i + 1) + ". " + names.get(i));
                 }
-                System.out.println("│" + repeatChar("═", 23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
 
 
                 System.out.print("Enter number to select author: ");
                 String choiceStr = sc.nextLine().trim();
-                System.out.println("│" + repeatChar("═", 23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
 
 
                 int choice;
@@ -399,13 +399,13 @@ public class LibraryGUI {
                     choice = Integer.parseInt(choiceStr);
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input.");
-                    System.out.println("│" + repeatChar("═", 23) + "│");
+                    System.out.println("│" + repeatChar("═", 48) + "│");
 
                     return;
                 }
                 if (choice < 1 || choice > ids.size()) {
                     System.out.println("Invalid choice.");
-                    System.out.println("│" + repeatChar("═", 23) + "│");
+                    System.out.println("│" + repeatChar("═", 48) + "│");
 
                     return;
                 }
@@ -414,10 +414,10 @@ public class LibraryGUI {
             }
 
             // Print selected author
-            System.out.println("│" + repeatChar("═", 23) + "│");
+            System.out.println("│" + repeatChar("═", 48) + "│");
 
             System.out.println("Author: " + chosenName);
-            System.out.println("│" + repeatChar("═", 23) + "│");
+            System.out.println("│" + repeatChar("═", 48) + "│");
 
 
             // Query books by selected author
@@ -439,7 +439,7 @@ public class LibraryGUI {
 
             if (bookIsbns.isEmpty()) {
                 System.out.println("This author has no books in the library.");
-                System.out.println("│" + repeatChar("═", 23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
 
                 return;
             }
@@ -453,12 +453,12 @@ public class LibraryGUI {
                 for (int i = 0; i < bookTitles.size(); i++) {
                     System.out.println((i + 1) + ". " + bookTitles.get(i) + " (ISBN: " + bookIsbns.get(i) + ")");
                 }
-                System.out.println("│" + repeatChar("═", 23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
 
 
                 System.out.print("Enter number to select book: ");
                 String choiceStr = sc.nextLine().trim();
-                System.out.println("│" + repeatChar("═", 23) + "│");
+                System.out.println("│" + repeatChar("═", 48) + "│");
 
 
                 int choice;
@@ -466,13 +466,13 @@ public class LibraryGUI {
                     choice = Integer.parseInt(choiceStr);
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input.");
-                    System.out.println("│" + repeatChar("═", 23) + "│");
+                    System.out.println("│" + repeatChar("═", 48) + "│");
 
                     return;
                 }
                 if (choice < 1 || choice > bookIsbns.size()) {
                     System.out.println("Invalid choice.");
-                    System.out.println("│" + repeatChar("═", 23) + "│");
+                    System.out.println("│" + repeatChar("═", 48) + "│");
 
                     return;
                 }
@@ -483,7 +483,7 @@ public class LibraryGUI {
 
             System.out.println("Title: " + bookTitles.get(selectedBookIndex));
             System.out.println("ISBN: " + selectedISBN);
-            System.out.println("│" + repeatChar("═", 23) + "│");
+            System.out.println("│" + repeatChar("═", 48) + "│");
 
 
             ps = conn.prepareStatement(
@@ -528,12 +528,12 @@ public class LibraryGUI {
                 System.out.println("All copies of this book are currently checked out at all libraries.");
             }
 
-            System.out.println("│" + repeatChar("═", 23) + "│");
+            System.out.println("│" + repeatChar("═", 48) + "│");
 
 
         } catch (SQLException e) {
             System.out.println("Error searching by author: " + e.getMessage());
-            System.out.println("│" + repeatChar("═", 23) + "│");
+            System.out.println("│" + repeatChar("═", 48) + "│");
 
         }
     }
