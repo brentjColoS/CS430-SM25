@@ -4,7 +4,7 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class LibraryGUI {
+public class Lab10Jackson {
 
     private static final String DB_URL = "jdbc:mariadb://helmi:3306/brentj";
     private static final String USER = "brentj";
@@ -13,7 +13,7 @@ public class LibraryGUI {
     private Scanner sc;
 
     // Connection Manager
-    public LibraryGUI() {
+    public Lab10Jackson() {
         sc = new Scanner(System.in);
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -558,7 +558,7 @@ public class LibraryGUI {
     }
 
     public static void main(String[] args) {
-        LibraryGUI app = new LibraryGUI();
+        Lab10Jackson app = new Lab10Jackson();
         app.run();
     }
 }

@@ -1,34 +1,47 @@
 -- Library Database README File
--- CS 430 | Lab 9
--- Due 6/25/2025 11:59 PM
+-- CS 430 | Lab 10
+-- Due 7/1/2025 11:59 PM
 -- Written by Brent Jackson
 
-CS430 Lab 9 – Library Activity Via XML
+CS430 Lab 10 – Library Availability Checker
 
-This project reads an XML file of library transactions, updates the database accordingly, and actively outputs a report of the activities.
+Overview:
+This is a text-based Java program that connects to a MariaDB library database. It allows library members to check book availability by ISBN, partial title, or author name.
+Users can also add new members if they are not already in the system.
 
-Setup & Running Instructions:
+Features:
+Prompts for Member ID and checks if the member exists.
+Allows adding a new member if not found.
+Search options include:
+ISBN, Partial or Full book title, Partial or Full Author name
 
-1. Start MariaDB and run the following commands to create and populate the database:
+Displays availability, library location, floor, shelf, and number of available copies.
+Uses prepared statements to prevent SQL injection.
+Prints formatted boxed welcome messages for clean output.
 
-   SOURCE CreateLibrary.sql;
-   SOURCE PopulateLibrary.sql;
+How to Run:
 
-2. Exit the MariaDB shell:
+Compile with:
+javac Lab10Jackson.java
 
-   exit;
+Run with:
+java Lab10Jackson
 
-3. Navigate to the Directory holding Lab9.java in your terminal (In my case L9):
+Requirements:
 
-   cd L9
+Java 8 or higher
 
-4. Compile and run the Java program, redirecting output to a file:
+MariaDB JDBC driver in your classpath
 
-   javac Lab9.java
-   java Lab9 > activity_output.txt
+A MariaDB database with tables for Member, Book, Author, BookAuthor, LocatedAt, Borrowed, and Library
 
-5. Re-enter MariaDB and run the queries:
+Notes:
 
-   SOURCE Queries.sql;
+Typing 'exit' at the Member ID prompt quits the program.
 
-Done! The file activity_output.txt contains the log of processing activity from the XML file. If you would like the output from the DB, you can optionally run tee output.txt for it.
+Typing 'exit' while adding a member returns to the main menu without adding the member.
+
+The program uses a repeatChar method to print lines and box characters for formatting.
+
+Author:
+Brent Jackson
