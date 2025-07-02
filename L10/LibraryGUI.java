@@ -142,28 +142,42 @@ public class LibraryGUI {
             );
             ps.setString(1, isbn);
             ResultSet rs = ps.executeQuery();
-            
+
+            boolean bookInStock = false;
+            boolean anyAvailable = false;
+
+            ArrayList<String> availableInfo = new ArrayList<>();
+            ArrayList<String> checkedOutInfo = new ArrayList<>();
+
+            while (rs.next()) {
+                bookInStock = true;
+                int available = rs.getInt("AvailableCopies");
+                String info = "Library: " + rs.getString("LibraryName")
+                            + ", Floor: " + rs.getString("Floor")
+                            + ", Shelf: " + rs.getString("Shelf");
+
+                if (available > 0) {
+                    anyAvailable = true;
+                    availableInfo.add(info + ", Copies available: " + available);
+                } else {
+                    checkedOutInfo.add(info + ", All copies are checked out.");
+                }
+            }
+
             System.out.println();
 
-            boolean found = false;
-            while (rs.next()) {
-                found = true;
-                int available = rs.getInt("AvailableCopies");
-                //System.out.println();
-                System.out.println("Title: " + rs.getString("Title"));
-                System.out.println("Library: " + rs.getString("LibraryName"));
-                System.out.println("Floor: " + rs.getString("Floor"));
-                System.out.println("Shelf: " + rs.getString("Shelf"));
-                if (available > 0) {
-                    System.out.println("Copies available: " + available);
-                } else {
-                    System.out.println("All copies are currently checked out.");
+            if (!bookInStock) {
+                System.out.println("This library system does not currently have the book in stock.");
+            } else if (anyAvailable) {
+                for (String s : availableInfo) {
+                    System.out.println("Available -> " + s);
                 }
-                System.out.println();
+            } else {
+                System.out.println("All copies of this book are currently checked out at all libraries.");
             }
-            if (!found) {
-                System.out.println("This ISBN does not exist in any library.");
-            }
+
+            System.out.println();
+
         } catch (SQLException e) {
             System.out.println("Error searching by ISBN: " + e.getMessage());
         }
@@ -223,14 +237,57 @@ public class LibraryGUI {
                 chosenIndex = choice - 1;
             }
 
-            // Print selected title information
+            String selectedISBN = isbns.get(chosenIndex);
+
+            // Query library availability for selected book
+            ps = conn.prepareStatement(
+                "SELECT L.Name AS LibraryName, LA.Floor, LA.Shelf, (LA.TotalCopies - IFNULL(BR.CheckedOut,0)) AS AvailableCopies " +
+                "FROM LocatedAt LA " +
+                "JOIN Library L ON LA.LibraryID = L.LibraryID " +
+                "LEFT JOIN (SELECT ISBN, LibraryID, COUNT(*) AS CheckedOut FROM Borrowed WHERE DateReturned IS NULL GROUP BY ISBN, LibraryID) BR " +
+                "ON LA.ISBN = BR.ISBN AND LA.LibraryID = BR.LibraryID " +
+                "WHERE LA.ISBN = ?;"
+            );
+            ps.setString(1, selectedISBN);
+            rs = ps.executeQuery();
+
+            boolean bookInStock = false;
+            boolean anyAvailable = false;
+
+            ArrayList<String> availableInfo = new ArrayList<>();
+            ArrayList<String> checkedOutInfo = new ArrayList<>();
+
+            while (rs.next()) {
+                bookInStock = true;
+                int available = rs.getInt("AvailableCopies");
+                String info = "Library: " + rs.getString("LibraryName")
+                            + ", Floor: " + rs.getString("Floor")
+                            + ", Shelf: " + rs.getString("Shelf");
+
+                if (available > 0) {
+                    anyAvailable = true;
+                    availableInfo.add(info + ", Copies available: " + available);
+                } else {
+                    checkedOutInfo.add(info + ", All copies are checked out.");
+                }
+            }
+
             System.out.println();
             System.out.println("Title: " + titles.get(chosenIndex));
-            System.out.println("ISBN: " + isbns.get(chosenIndex));
+            System.out.println("ISBN: " + selectedISBN);
             System.out.println();
 
-            // Optionally, you can call searchByISBN here to show library/location info
-            // searchByISBN(isbns.get(chosenIndex));
+            if (!bookInStock) {
+                System.out.println("This library system does not currently have the book in stock.");
+            } else if (anyAvailable) {
+                for (String s : availableInfo) {
+                    System.out.println("Available -> " + s);
+                }
+            } else {
+                System.out.println("All copies of this book are currently checked out at all libraries.");
+            }
+
+            System.out.println();
 
         } catch (SQLException e) {
             System.out.println("Error searching by title: " + e.getMessage());
@@ -325,14 +382,10 @@ public class LibraryGUI {
                 return;
             }
 
-            // Display books and prompt for selection
-            if (bookIsbns.size() == 1) {
-                System.out.println("Title: " + bookTitles.get(0));
-                System.out.println("ISBN: " + bookIsbns.get(0));
-                System.out.println();
+            int selectedBookIndex = 0;
 
-                // Show detailed library info for this book
-                searchByISBN(bookIsbns.get(0));
+            if (bookIsbns.size() == 1) {
+                selectedBookIndex = 0;
             } else {
                 System.out.println("Books by this author:");
                 for (int i = 0; i < bookTitles.size(); i++) {
@@ -357,21 +410,67 @@ public class LibraryGUI {
                     System.out.println();
                     return;
                 }
-
-                // Show selected book details
-                System.out.println("Title: " + bookTitles.get(choice - 1));
-                System.out.println("ISBN: " + bookIsbns.get(choice - 1));
-                System.out.println();
-
-                // Show detailed library info for selected book
-                searchByISBN(bookIsbns.get(choice - 1));
+                selectedBookIndex = choice - 1;
             }
+
+            String selectedISBN = bookIsbns.get(selectedBookIndex);
+
+            // Display selected book
+            System.out.println("Title: " + bookTitles.get(selectedBookIndex));
+            System.out.println("ISBN: " + selectedISBN);
+            System.out.println();
+
+            // Query library availability for selected book
+            ps = conn.prepareStatement(
+                "SELECT L.Name AS LibraryName, LA.Floor, LA.Shelf, (LA.TotalCopies - IFNULL(BR.CheckedOut,0)) AS AvailableCopies " +
+                "FROM LocatedAt LA " +
+                "JOIN Library L ON LA.LibraryID = L.LibraryID " +
+                "LEFT JOIN (SELECT ISBN, LibraryID, COUNT(*) AS CheckedOut FROM Borrowed WHERE DateReturned IS NULL GROUP BY ISBN, LibraryID) BR " +
+                "ON LA.ISBN = BR.ISBN AND LA.LibraryID = BR.LibraryID " +
+                "WHERE LA.ISBN = ?;"
+            );
+            ps.setString(1, selectedISBN);
+            rs = ps.executeQuery();
+
+            boolean bookInStock = false;
+            boolean anyAvailable = false;
+
+            ArrayList<String> availableInfo = new ArrayList<>();
+            ArrayList<String> checkedOutInfo = new ArrayList<>();
+
+            while (rs.next()) {
+                bookInStock = true;
+                int available = rs.getInt("AvailableCopies");
+                String info = "Library: " + rs.getString("LibraryName")
+                            + ", Floor: " + rs.getString("Floor")
+                            + ", Shelf: " + rs.getString("Shelf");
+
+                if (available > 0) {
+                    anyAvailable = true;
+                    availableInfo.add(info + ", Copies available: " + available);
+                } else {
+                    checkedOutInfo.add(info + ", All copies are checked out.");
+                }
+            }
+
+            if (!bookInStock) {
+                System.out.println("This library system does not currently have the book in stock.");
+            } else if (anyAvailable) {
+                for (String s : availableInfo) {
+                    System.out.println("Available -> " + s);
+                }
+            } else {
+                System.out.println("All copies of this book are currently checked out at all libraries.");
+            }
+
+            System.out.println();
 
         } catch (SQLException e) {
             System.out.println("Error searching by author: " + e.getMessage());
             System.out.println();
         }
     }
+
 
 
     private void closeConn() {
