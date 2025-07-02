@@ -91,7 +91,7 @@ public class LibraryGUI {
 
     private void addNewMember(int memberID) {
         try {
-            System.out.print("Enter full name: ");
+            System.out.print("Enter full name (First Last): ");
             String name = sc.nextLine().trim();
             if (name.isEmpty()) {
                 System.out.println("Name cannot be empty.");
