@@ -40,11 +40,16 @@ public class LibraryGUI {
                 System.out.print("Member not found. Add new member? (Y/N): ");
                 String add = sc.nextLine().trim().toUpperCase();
                 if (add.equals("Y")) {
-                    addNewMember(memberID);
+                    boolean added = addNewMember(memberID);
+                    if (!added) {
+                        // User typed exit during addNewMember; restart while loop
+                        continue;
+                    }
                 } else {
                     continue;
                 }
             }
+
 
             System.out.println("Search by:");
             System.out.println("1. ISBN");
@@ -89,26 +94,26 @@ public class LibraryGUI {
         }
     }
 
-    private void addNewMember(int memberID) {
+    private boolean addNewMember(int memberID) {
         try {
-            System.out.print("Enter full name (First Last) or type 'exit' to cancel: ");
+            System.out.print("Enter full name (First Last) or type 'exit' to return to main menu: ");
             String name = sc.nextLine().trim();
             if (name.equalsIgnoreCase("exit")) {
-                System.out.println("Returning to member ID entry.");
-                return;
+                System.out.println("Returning to main menu.");
+                return false; // signal to return to main menu
             }
             if (name.isEmpty()) {
                 System.out.println("Name cannot be empty.");
-                return;
+                return true; // remain in current flow
             }
 
             String gender;
             while (true) {
-                System.out.print("Enter gender (M/F) or type 'exit' to cancel: ");
+                System.out.print("Enter gender (M/F) or type 'exit' to return to main menu: ");
                 gender = sc.nextLine().trim().toUpperCase();
                 if (gender.equalsIgnoreCase("exit")) {
-                    System.out.println("Returning to member ID entry.");
-                    return;
+                    System.out.println("Returning to main menu.");
+                    return false;
                 }
                 if (gender.equals("M") || gender.equals("F")) break;
                 System.out.println("Invalid gender. Must be 'M' or 'F'.");
@@ -116,11 +121,11 @@ public class LibraryGUI {
 
             String dob;
             while (true) {
-                System.out.print("Enter date of birth (YYYY-MM-DD) or type 'exit' to cancel: ");
+                System.out.print("Enter date of birth (YYYY-MM-DD) or type 'exit' to return to main menu: ");
                 dob = sc.nextLine().trim();
                 if (dob.equalsIgnoreCase("exit")) {
-                    System.out.println("Returning to member ID entry.");
-                    return;
+                    System.out.println("Returning to main menu.");
+                    return false;
                 }
                 try {
                     LocalDate.parse(dob);
@@ -142,7 +147,10 @@ public class LibraryGUI {
         } catch (SQLException e) {
             System.out.println("Error adding member: " + e.getMessage());
         }
+
+        return true; // finished normally, stay in current flow
     }
+
 
 
     private void searchByISBN(String isbn) {
