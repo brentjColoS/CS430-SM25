@@ -1,6 +1,7 @@
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LibraryGUI {
@@ -57,11 +58,11 @@ public class LibraryGUI {
                 String isbn = sc.nextLine().trim();
                 searchByISBN(isbn);
             } else if (choice.equals("2")) {
-                System.out.print("Enter part of book title: ");
+                System.out.print("Enter part (or all) of book title: ");
                 String title = sc.nextLine().trim();
                 searchByTitle(title);
             } else if (choice.equals("3")) {
-                System.out.print("Enter author name: ");
+                System.out.print("Enter author name or part of it: ");
                 String author = sc.nextLine().trim();
                 searchByAuthor(author);
             } else {
@@ -163,9 +164,7 @@ public class LibraryGUI {
 
     private void searchByTitle(String title) {
         try {
-            PreparedStatement ps = conn.prepareStatement(
-                "SELECT B.ISBN, B.Title FROM Book B WHERE B.Title LIKE ?;"
-            );
+            PreparedStatement ps = conn.prepareStatement("SELECT B.ISBN, B.Title FROM Book B WHERE B.Title LIKE ?;");
             ps.setString(1, "%" + title + "%");
             ResultSet rs = ps.executeQuery();
 
@@ -184,17 +183,54 @@ public class LibraryGUI {
         }
     }
 
-    private void searchByAuthor(String author) {
+    private void searchByAuthor(String authorPart) {
         try {
+            // First find matching authors
             PreparedStatement ps = conn.prepareStatement(
-                "SELECT DISTINCT B.ISBN, B.Title FROM Book B " +
-                "JOIN BookAuthor BA ON B.ISBN = BA.ISBN " +
-                "JOIN Author A ON BA.AuthorID = A.AuthorID " +
-                "WHERE A.LastName LIKE ? OR A.FirstName LIKE ?;"
+                "SELECT AuthorID, Name FROM Author WHERE Name LIKE ?;"
             );
-            ps.setString(1, "%" + author + "%");
-            ps.setString(2, "%" + author + "%");
+            ps.setString(1, "%" + authorPart + "%");
             ResultSet rs = ps.executeQuery();
+
+            // Collect matches
+            ArrayList<Integer> ids = new ArrayList<>();
+            ArrayList<String> names = new ArrayList<>();
+            while (rs.next()) {
+                ids.add(rs.getInt("AuthorID"));
+                names.add(rs.getString("Name"));
+            }
+
+            if (ids.isEmpty()) {
+                System.out.println("No authors found matching: " + authorPart);
+                return;
+            }
+
+            // If multiple matches, ask user to pick
+            int chosenID;
+            if (ids.size() == 1) {
+                chosenID = ids.get(0);
+            } else {
+                System.out.println("Multiple authors found:");
+                for (int i = 0; i < names.size(); i++) {
+                    System.out.println((i + 1) + ". " + names.get(i));
+                }
+                System.out.print("Enter number to select author: ");
+                int choice = Integer.parseInt(sc.nextLine().trim());
+                if (choice < 1 || choice > ids.size()) {
+                    System.out.println("Invalid choice.");
+                    return;
+                }
+                chosenID = ids.get(choice - 1);
+            }
+
+            // Query books by selected author
+            ps = conn.prepareStatement(
+                "SELECT B.ISBN, B.Title FROM Book B " +
+                "JOIN BookAuthor BA ON B.ISBN = BA.ISBN " +
+                "WHERE BA.AuthorID = ?;"
+            );
+            ps.setInt(1, chosenID);
+            rs = ps.executeQuery();
 
             boolean found = false;
             while (rs.next()) {
@@ -204,12 +240,16 @@ public class LibraryGUI {
                 System.out.println();
             }
             if (!found) {
-                System.out.println("No books found by that author.");
+                System.out.println("This author has no books in the library.");
             }
+
         } catch (SQLException e) {
             System.out.println("Error searching by author: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input.");
         }
     }
+
 
     private void closeConn() {
         try {
