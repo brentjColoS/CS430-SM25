@@ -55,14 +55,17 @@ public class LibraryGUI {
             String choice = sc.nextLine().trim();
 
             if (choice.equals("1")) {
+                System.out.println();
                 System.out.print("Enter ISBN: ");
                 String isbn = sc.nextLine().trim();
                 searchByISBN(isbn);
             } else if (choice.equals("2")) {
+                System.out.println();
                 System.out.print("Enter part (or all) of book title: ");
                 String title = sc.nextLine().trim();
                 searchByTitle(title);
             } else if (choice.equals("3")) {
+                System.out.println();
                 System.out.print("Enter author name or part of it: ");
                 String author = sc.nextLine().trim();
                 searchByAuthor(author);
@@ -131,7 +134,7 @@ public class LibraryGUI {
     private void searchByISBN(String isbn) {
         try {
             PreparedStatement ps = conn.prepareStatement(
-                "SELECT B.Title, L.Name AS LibraryName, LA.Shelf, (LA.TotalCopies - IFNULL(BR.CheckedOut,0)) AS AvailableCopies " +
+                "SELECT B.Title, L.Name AS LibraryName, LA.Floor, LA.Shelf, (LA.TotalCopies - IFNULL(BR.CheckedOut,0)) AS AvailableCopies " +
                 "FROM Book B JOIN LocatedAt LA ON B.ISBN = LA.ISBN " +
                 "JOIN Library L ON LA.LibraryID = L.LibraryID " +
                 "LEFT JOIN (SELECT ISBN, LibraryID, COUNT(*) AS CheckedOut FROM Borrowed WHERE DateReturned IS NULL GROUP BY ISBN, LibraryID) BR " +
