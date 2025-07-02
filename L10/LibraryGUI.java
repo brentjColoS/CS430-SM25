@@ -2,7 +2,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class LibraryGUI {
@@ -168,25 +167,73 @@ public class LibraryGUI {
         }
     }
 
-    private void searchByTitle(String title) {
+    private void searchByTitle(String titlePart) {
         try {
-            PreparedStatement ps = conn.prepareStatement("SELECT B.ISBN, B.Title FROM Book B WHERE B.Title LIKE ?;");
-            ps.setString(1, "%" + title + "%");
+            PreparedStatement ps = conn.prepareStatement(
+                "SELECT ISBN, Title FROM Book WHERE Title LIKE ?;"
+            );
+            ps.setString(1, "%" + titlePart + "%");
             ResultSet rs = ps.executeQuery();
 
-            boolean found = false;
+            ArrayList<String> isbns = new ArrayList<>();
+            ArrayList<String> titles = new ArrayList<>();
+
             while (rs.next()) {
-                found = true;
-                System.out.println();
-                System.out.println("ISBN: " + rs.getString("ISBN"));
-                System.out.println("Title: " + rs.getString("Title"));
-                System.out.println();
+                isbns.add(rs.getString("ISBN"));
+                titles.add(rs.getString("Title"));
             }
-            if (!found) {
+
+            if (isbns.isEmpty()) {
                 System.out.println("No titles matching that found.");
+                System.out.println();
+                return;
             }
+
+            int chosenIndex = 0;
+
+            if (isbns.size() == 1) {
+                chosenIndex = 0;
+            } else {
+                System.out.println("Multiple titles found:");
+                for (int i = 0; i < titles.size(); i++) {
+                    System.out.println((i + 1) + ". " + titles.get(i) + " (ISBN: " + isbns.get(i) + ")");
+                }
+                System.out.println();
+
+                System.out.print("Enter number to select title: ");
+                String choiceStr = sc.nextLine().trim();
+                System.out.println();
+
+                int choice;
+                try {
+                    choice = Integer.parseInt(choiceStr);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input.");
+                    System.out.println();
+                    return;
+                }
+
+                if (choice < 1 || choice > isbns.size()) {
+                    System.out.println("Invalid choice.");
+                    System.out.println();
+                    return;
+                }
+
+                chosenIndex = choice - 1;
+            }
+
+            // Print selected title information
+            System.out.println();
+            System.out.println("Title: " + titles.get(chosenIndex));
+            System.out.println("ISBN: " + isbns.get(chosenIndex));
+            System.out.println();
+
+            // Optionally, you can call searchByISBN here to show library/location info
+            // searchByISBN(isbns.get(chosenIndex));
+
         } catch (SQLException e) {
             System.out.println("Error searching by title: " + e.getMessage());
+            System.out.println();
         }
     }
 
