@@ -25,10 +25,11 @@ public class LibraryGUI {
 
     // Primary Runner
     public void run() {
-        System.out.flush();
+        System.out.println(repeatChar("\n", 15));
         System.out.println("╭────────────────────────────────────────────────────────╮");
         System.out.println("│      Welcome to the Library Availability Checker!      │");
         System.out.println("│          Please enter your Member ID to begin.         │");
+        System.out.println("│             ~ Written by: Brent Jackson ~              │");
         System.out.println("╰────────────────────────────────────────────────────────╯");
 
         while (true) {
@@ -67,18 +68,18 @@ public class LibraryGUI {
             String choice = sc.nextLine().trim();
 
             if (choice.equals("1")) {
-                System.out.println("│" + repeatChar("═", 48) + "│");
+                System.out.println("\n" + repeatChar("═", 100) + "\n");
 
                 System.out.print("Enter ISBN: ");
                 String isbn = sc.nextLine().trim();
                 searchByISBN(isbn);
             } else if (choice.equals("2")) {
-                System.out.println("│" + repeatChar("═", 48) + "│");
+                System.out.println("\n" + repeatChar("═", 100) + "\n");
                 System.out.print("Enter part (or all) of book title: ");
                 String title = sc.nextLine().trim();
                 searchByTitle(title);
             } else if (choice.equals("3")) {
-                System.out.println("│" + repeatChar("═", 48) + "│");
+                System.out.println("\n" + repeatChar("═", 100) + "\n");
 
                 System.out.print("Enter author name or part of it: ");
                 String author = sc.nextLine().trim();
@@ -221,7 +222,7 @@ public class LibraryGUI {
                 }
             }
 
-            System.out.println("│" + repeatChar("═", 48) + "│");
+            System.out.println("\n" + repeatChar("═", 100) + "\n");
 
 
         } catch (SQLException e) {
@@ -248,7 +249,7 @@ public class LibraryGUI {
 
             if (isbns.isEmpty()) {
                 System.out.println(" No titles matching that found.");
-                System.out.println("│" + repeatChar("═", 48) + "│");
+                System.out.println("\n" + repeatChar("═", 100) + "\n");
 
                 return;
             }
@@ -273,14 +274,14 @@ public class LibraryGUI {
                     choice = Integer.parseInt(choiceStr);
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input.");
-                    System.out.println("│" + repeatChar("═", 48) + "│");
+                    System.out.println("\n" + repeatChar("═", 100) + "\n");
 
                     return;
                 }
 
                 if (choice < 1 || choice > isbns.size()) {
                     System.out.println("Invalid choice.");
-                    System.out.println("│" + repeatChar("═", 48) + "│");
+                    System.out.println("\n" + repeatChar("═", 100) + "\n");
 
                     return;
                 }
@@ -339,12 +340,12 @@ public class LibraryGUI {
                 System.out.println("All copies of this book are currently checked out at all libraries.");
             }
 
-            System.out.println("│" + repeatChar("═", 48) + "│");
+            System.out.println("\n" + repeatChar("═", 100) + "\n");
 
 
         } catch (SQLException e) {
             System.out.println("Error searching by title: " + e.getMessage());
-            System.out.println("│" + repeatChar("═", 48) + "│");
+            System.out.println("\n" + repeatChar("═", 100) + "\n");
 
         }
     }
@@ -369,7 +370,7 @@ public class LibraryGUI {
 
             if (ids.isEmpty()) {
                 System.out.println("No authors found matching: " + authorPart);
-                System.out.println("│" + repeatChar("═", 48) + "│");
+                System.out.println("\n" + repeatChar("═", 100) + "\n");
 
                 return;
             }
@@ -399,13 +400,13 @@ public class LibraryGUI {
                     choice = Integer.parseInt(choiceStr);
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input.");
-                    System.out.println("│" + repeatChar("═", 48) + "│");
+                    System.out.println("\n" + repeatChar("═", 100) + "\n");
 
                     return;
                 }
                 if (choice < 1 || choice > ids.size()) {
                     System.out.println("Invalid choice.");
-                    System.out.println("│" + repeatChar("═", 48) + "│");
+                    System.out.println("\n" + repeatChar("═", 100) + "\n");
 
                     return;
                 }
@@ -439,7 +440,7 @@ public class LibraryGUI {
 
             if (bookIsbns.isEmpty()) {
                 System.out.println("This author has no books in the library.");
-                System.out.println("│" + repeatChar("═", 48) + "│");
+                System.out.println("\n" + repeatChar("═", 100) + "\n");
 
                 return;
             }
@@ -466,13 +467,13 @@ public class LibraryGUI {
                     choice = Integer.parseInt(choiceStr);
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input.");
-                    System.out.println("│" + repeatChar("═", 48) + "│");
+                    System.out.println("\n" + repeatChar("═", 100) + "\n");
 
                     return;
                 }
                 if (choice < 1 || choice > bookIsbns.size()) {
                     System.out.println("Invalid choice.");
-                    System.out.println("│" + repeatChar("═", 48) + "│");
+                    System.out.println("\n" + repeatChar("═", 100) + "\n");
 
                     return;
                 }
@@ -528,12 +529,12 @@ public class LibraryGUI {
                 System.out.println("All copies of this book are currently checked out at all libraries.");
             }
 
-            System.out.println("│" + repeatChar("═", 48) + "│");
+            System.out.println("\n" + repeatChar("═", 100) + "\n");
 
 
         } catch (SQLException e) {
             System.out.println("Error searching by author: " + e.getMessage());
-            System.out.println("│" + repeatChar("═", 48) + "│");
+            System.out.println("\n" + repeatChar("═", 100) + "\n");
 
         }
     }
