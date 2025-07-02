@@ -91,8 +91,12 @@ public class LibraryGUI {
 
     private void addNewMember(int memberID) {
         try {
-            System.out.print("Enter full name (First Last): ");
+            System.out.print("Enter full name (First Last) or type 'exit' to cancel: ");
             String name = sc.nextLine().trim();
+            if (name.equalsIgnoreCase("exit")) {
+                System.out.println("Returning to member ID entry.");
+                return;
+            }
             if (name.isEmpty()) {
                 System.out.println("Name cannot be empty.");
                 return;
@@ -100,16 +104,24 @@ public class LibraryGUI {
 
             String gender;
             while (true) {
-                System.out.print("Enter gender (M/F): ");
+                System.out.print("Enter gender (M/F) or type 'exit' to cancel: ");
                 gender = sc.nextLine().trim().toUpperCase();
+                if (gender.equalsIgnoreCase("exit")) {
+                    System.out.println("Returning to member ID entry.");
+                    return;
+                }
                 if (gender.equals("M") || gender.equals("F")) break;
                 System.out.println("Invalid gender. Must be 'M' or 'F'.");
             }
 
             String dob;
             while (true) {
-                System.out.print("Enter date of birth (YYYY-MM-DD): ");
+                System.out.print("Enter date of birth (YYYY-MM-DD) or type 'exit' to cancel: ");
                 dob = sc.nextLine().trim();
+                if (dob.equalsIgnoreCase("exit")) {
+                    System.out.println("Returning to member ID entry.");
+                    return;
+                }
                 try {
                     LocalDate.parse(dob);
                     break;
@@ -118,7 +130,9 @@ public class LibraryGUI {
                 }
             }
 
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO Member (MemberID, Name, Gender, DateOfBirth) VALUES (?, ?, ?, ?)");
+            PreparedStatement ps = conn.prepareStatement(
+                "INSERT INTO Member (MemberID, Name, Gender, DateOfBirth) VALUES (?, ?, ?, ?)"
+            );
             ps.setInt(1, memberID);
             ps.setString(2, name);
             ps.setString(3, gender);
@@ -129,6 +143,7 @@ public class LibraryGUI {
             System.out.println("Error adding member: " + e.getMessage());
         }
     }
+
 
     private void searchByISBN(String isbn) {
         try {
