@@ -133,11 +133,15 @@ public class LibraryGUI {
     private void searchByISBN(String isbn) {
         try {
             PreparedStatement ps = conn.prepareStatement(
-                "SELECT B.Title, L.Name AS LibraryName, LA.Floor, LA.Shelf, (LA.TotalCopies - IFNULL(BR.CheckedOut,0)) AS AvailableCopies " +
-                "FROM Book B JOIN LocatedAt LA ON B.ISBN = LA.ISBN " +
+                "SELECT B.Title, L.Name AS LibraryName, LA.Floor, LA.Shelf, " +
+                "(LA.TotalCopies - IFNULL(BR.CheckedOut,0)) AS AvailableCopies " +
+                "FROM Book B " +
+                "JOIN LocatedAt LA ON B.ISBN = LA.ISBN " +
                 "JOIN Library L ON LA.LibraryID = L.LibraryID " +
-                "LEFT JOIN (SELECT ISBN, LibraryID, COUNT(*) AS CheckedOut FROM Borrowed WHERE DateReturned IS NULL GROUP BY ISBN, LibraryID) BR " +
-                "ON LA.ISBN = BR.ISBN AND LA.LibraryID = BR.LibraryID " +
+                "LEFT JOIN (" +
+                "  SELECT ISBN, LibraryID, COUNT(*) AS CheckedOut " +
+                "  FROM Borrowed WHERE DateReturned IS NULL GROUP BY ISBN, LibraryID" +
+                ") BR ON LA.ISBN = BR.ISBN AND LA.LibraryID = BR.LibraryID " +
                 "WHERE B.ISBN = ?;"
             );
             ps.setString(1, isbn);
@@ -145,12 +149,16 @@ public class LibraryGUI {
 
             boolean bookInStock = false;
             boolean anyAvailable = false;
+            String bookTitle = "";
 
             ArrayList<String> availableInfo = new ArrayList<>();
             ArrayList<String> checkedOutInfo = new ArrayList<>();
 
             while (rs.next()) {
                 bookInStock = true;
+                if (bookTitle.isEmpty()) {
+                    bookTitle = rs.getString("Title");
+                }
                 int available = rs.getInt("AvailableCopies");
                 String info = "Library: " + rs.getString("LibraryName")
                             + ", Floor: " + rs.getString("Floor")
@@ -168,12 +176,16 @@ public class LibraryGUI {
 
             if (!bookInStock) {
                 System.out.println("This library system does not currently have the book in stock.");
-            } else if (anyAvailable) {
-                for (String s : availableInfo) {
-                    System.out.println("Available -> " + s);
-                }
             } else {
-                System.out.println("All copies of this book are currently checked out at all libraries.");
+                System.out.println("Title: " + bookTitle);
+                System.out.println();
+                if (anyAvailable) {
+                    for (String s : availableInfo) {
+                        System.out.println("Available -> " + s);
+                    }
+                } else {
+                    System.out.println("All copies of this book are currently checked out at all libraries.");
+                }
             }
 
             System.out.println();
@@ -182,6 +194,7 @@ public class LibraryGUI {
             System.out.println("Error searching by ISBN: " + e.getMessage());
         }
     }
+
 
     private void searchByTitle(String titlePart) {
         try {
