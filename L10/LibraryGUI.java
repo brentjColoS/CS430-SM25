@@ -12,6 +12,7 @@ public class LibraryGUI {
     private Connection conn;
     private Scanner sc;
 
+    // Connection Manager
     public LibraryGUI() {
         sc = new Scanner(System.in);
         try {
@@ -22,7 +23,10 @@ public class LibraryGUI {
         }
     }
 
+    // Primary Runner
     public void run() {
+        System.out.flush();
+        System.out.println("Welcome to the Library Availability Checker! Please enter your Member ID to begin.");
         while (true) {
             System.out.print("Enter Member ID (or 'exit' to quit): ");
             String input = sc.nextLine().trim();
@@ -42,7 +46,7 @@ public class LibraryGUI {
                 if (add.equals("Y")) {
                     boolean added = addNewMember(memberID);
                     if (!added) {
-                        // User typed exit during addNewMember; restart while loop
+                        // User typed exit during addNewMember - restart while loop
                         continue;
                     }
                 } else {
@@ -100,11 +104,11 @@ public class LibraryGUI {
             String name = sc.nextLine().trim();
             if (name.equalsIgnoreCase("exit")) {
                 System.out.println("Returning to main menu.");
-                return false; // signal to return to main menu
+                return false;
             }
             if (name.isEmpty()) {
                 System.out.println("Name cannot be empty.");
-                return true; // remain in current flow
+                return true;
             }
 
             String gender;
@@ -148,10 +152,8 @@ public class LibraryGUI {
             System.out.println("Error adding member: " + e.getMessage());
         }
 
-        return true; // finished normally, stay in current flow
+        return true;
     }
-
-
 
     private void searchByISBN(String isbn) {
         try {
@@ -275,7 +277,6 @@ public class LibraryGUI {
 
             String selectedISBN = isbns.get(chosenIndex);
 
-            // Query library availability for selected book
             ps = conn.prepareStatement(
                 "SELECT L.Name AS LibraryName, LA.Floor, LA.Shelf, (LA.TotalCopies - IFNULL(BR.CheckedOut,0)) AS AvailableCopies " +
                 "FROM LocatedAt LA " +
@@ -358,7 +359,7 @@ public class LibraryGUI {
             int chosenID;
             String chosenName;
 
-            // If multiple matches, ask user to pick
+            // Ask user to pick
             if (ids.size() == 1) {
                 chosenID = ids.get(0);
                 chosenName = names.get(0);
@@ -451,12 +452,10 @@ public class LibraryGUI {
 
             String selectedISBN = bookIsbns.get(selectedBookIndex);
 
-            // Display selected book
             System.out.println("Title: " + bookTitles.get(selectedBookIndex));
             System.out.println("ISBN: " + selectedISBN);
             System.out.println();
 
-            // Query library availability for selected book
             ps = conn.prepareStatement(
                 "SELECT L.Name AS LibraryName, LA.Floor, LA.Shelf, (LA.TotalCopies - IFNULL(BR.CheckedOut,0)) AS AvailableCopies " +
                 "FROM LocatedAt LA " +
